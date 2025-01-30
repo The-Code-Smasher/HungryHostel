@@ -1,0 +1,74 @@
+.auth-container {
+    width: 350px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background: #f0f0f0;
+}
+
+.tab.active {
+    background: #e76f51;
+    color: white;
+    font-weight: bold;
+}
+
+.form-container {
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+    height: 20px;
+    background-color: white;
+}
+
+.button {
+    margin-top: 15px;
+    padding: 10px;
+    background: #e76f51;
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.alt-option {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.alt-option button {
+    background: none;
+    border: none;
+    color: #e76f51;
+    cursor: pointer;
+    font-weight: bold;
+}

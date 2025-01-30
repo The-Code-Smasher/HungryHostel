@@ -1,24 +1,29 @@
-const express = require('express');
-const cors = require('cors');
-const crypto = require('crypto');
-const axios = require('axios');
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import cors from "cors";
+import jwt from "jsonwebtoken";
+import axios from "axios";
+import crypto from "crypto";
+import userRoutes from "./routes/userRoutes.js";
+import { connectDB } from "./config/db.js";
+
+dotenv.config();
 
 const app = express();
-const dbconnection = require('./config/db')
-const userModel = require('./models/user')
-const bcrypt = require('bcrypt')
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }));
+
+connectDB();
+
+let salt_key = '96434309-7796-489d-8924-ab56988a6076';
+let merchant_id = 'PGTESTPAYUAT86';
 
 app.get("/", (req, res) => {
     res.send("API is running");
-})
-
-let salt_key = '96434309-7796-489d-8924-ab56988a6076'
-let merchant_id = 'PGTESTPAYUAT86'
+});
 
 app.post('/order', async (req, res) => {
     try {
@@ -137,69 +142,31 @@ app.post('/status', async (req, res) => {
     }
 });
 
+// Routes
+app.use("/api/users", userRoutes);
 
-app.listen(8000, ()=>{
-    console.log("server is running on port 8000");
-})
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch(err => console.log(err));
 
-app.get('/', (req, res) => {
-    res.render('/')
-}
-)
-app.get('/about', (req, res) => {
-res.send('about')
-})
-app.get('/profile', (req, res) => {
-res.send('profile')
-})
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-app.get('/register', (req, res) => {
+const authMiddleware = (req, res, next) => {
+    const token = req.header("Authorization");
+    if (!token) return res.status(401).json({ message: "Unauthorized" });
 
-res.render('register')
-})
-
-app.post('/register', async (req, res) => {
-const {username, email, password} = req.body
-
-try {
-    const saltRounds = 10; // Number of salt rounds
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-    const newUser = await userModel.create({
-        username: username,
-        email: email,
-        password:hashedPassword
-    })
-    res.send('User registered')
-}
-catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
-}
-})
-
-app.get('/login', (req, res) => {
-res.render('login')
-})
-app.post('/login', async (req, res) => {
-const {email, password} = req.body
-
-try {
-    const user = await userModel.findOne({ email });
-    // res.send(user)
-    if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;
+        next();
+    } catch {
+        res.status(401).json({ message: "Invalid token" });
     }
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-        return res.status(401).json({ error: 'Invalid password' });
-    }
-    res.render('/')
-    
-}
-catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
-}
+};
 
-})
+// Protect an example route
+app.get("/api/protected", authMiddleware, (req, res) => {
+    res.json({ message: "You are authorized" });
+});
