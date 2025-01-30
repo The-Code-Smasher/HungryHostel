@@ -5,8 +5,10 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import axios from "axios";
 import crypto from "crypto";
-import userRoutes from "./routes/userRoutes.js";
+// import userRoutes from "./routes/userRoutes.js";
 import { connectDB } from "./config/db.js";
+import UserModel from "./models/User.js";
+import bcrypt from "bcryptjs";
 
 dotenv.config();
 
@@ -142,9 +144,6 @@ app.post('/status', async (req, res) => {
     }
 });
 
-// Routes
-app.use("/api/users", userRoutes);
-
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("MongoDB Connected"))
@@ -166,7 +165,61 @@ const authMiddleware = (req, res, next) => {
     }
 };
 
-// Protect an example route
+// login data 
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        console.log("🔹 Received login request for email:", email); 
+
+        const user = await UserModel.findOne({ email });
+
+        if (!user) {
+            console.log("❌ No user found with this email");
+            return res.status(404).json({ message: "No record found" });
+        }
+
+        console.log("User found:", user);
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        console.log("Password match result:", isMatch);
+
+        if (!isMatch) {
+            console.log("Password incorrect");
+            return res.status(400).json({ message: "Incorrect password" });
+        }
+
+        console.log("Login successful!");
+        res.json({ message: "Success", user });
+
+    } catch (error) {
+        console.error("Login Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
+app.post('/register', async (req, res) => {
+    try {
+        const { username, mobile, email, password } = req.body;
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newUser = new UserModel({
+            username,
+            mobile,
+            email,
+            password: hashedPassword
+        });
+
+        await newUser.save();
+        res.json({ message: "User registered successfully" });
+    } catch (error) {
+        console.error("Registration Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+
 app.get("/api/protected", authMiddleware, (req, res) => {
     res.json({ message: "You are authorized" });
 });
