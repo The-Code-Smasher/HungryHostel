@@ -1,0 +1,46 @@
+.food-container {
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: start;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.ctg-title{
+    color:#2e2e2e;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.food-ctg {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    gap: 10px;
+}
+
+.food-ctg::-webkit-scrollbar {
+    display: none;
+}
+
+.ctg-all {
+    padding: 0.7rem 1.5rem;
+    background-color: #6b7280;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ctg-all:hover {
+    background-color: #ff6600;
+    color: white;
+    transform: scale(1.05);
+}
