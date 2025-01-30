@@ -5,14 +5,15 @@ import './Login.css';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [email, setEmail] = useState('');
+    // const [email, setEmail] = useState('');
+    const [identifier, setIdentifier] = useState(""); // Can be email, username, or mobile
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8000/login', { email, password });
+            const response = await axios.post('http://localhost:8000/login', { identifier, password });
             console.log("Server Response:", response.data);
 
             if (response.data.message === "Success") {
@@ -30,19 +31,19 @@ const Login = () => {
     return (
         <div className="auth-container">
             <div className="tabs">
-                <div className="tab active">Login</div>
                 <div className="tab" onClick={() => navigate('/register')}>Sign Up</div>
+                <div className="tab active">Login</div>
             </div>
             <div className="form-container" id="login">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email</label>
                     <input 
-                        type="email" 
-                        id="email" 
-                        placeholder="Enter your email" 
+                        type="text" 
+                        id="text" 
+                        placeholder="Enter your email, username or phone no." 
                         required 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={identifier}
+                        onChange={(e) => setIdentifier(e.target.value)}
                     />
 
                     <label htmlFor="password">Password</label>

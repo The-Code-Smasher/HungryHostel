@@ -168,13 +168,20 @@ const authMiddleware = (req, res, next) => {
 // login data 
 app.post('/login', async (req, res) => {
     try {
-        const { email, password } = req.body;
-        console.log("🔹 Received login request for email:", email); 
+        const { identifier, password } = req.body;
+        console.log("🔹 Received login request for email:", identifier); 
 
-        const user = await UserModel.findOne({ email });
+        // const user = await UserModel.findOne({ email });
+        const user = await UserModel.findOne({
+            $or: [
+                { email: identifier },
+                { username: identifier },
+                { mobile: identifier }
+            ]
+        });
 
         if (!user) {
-            console.log("❌ No user found with this email");
+            console.log("No user found with this email");
             return res.status(404).json({ message: "No record found" });
         }
 
