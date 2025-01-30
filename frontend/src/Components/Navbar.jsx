@@ -4,6 +4,7 @@ import "./Navbar.css";
 import { useCart } from "../context/CardContext";
 import Logo from "../assets/logo.png";
 import Basket from "../assets/purchase.png";
+import Cart from "./Card";
 
 const Navbar = () => {
     const { getTotalCount } = useCart();
