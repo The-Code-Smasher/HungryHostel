@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CustomerDashboard from './Pages/CustomerDashboard';
 import './App.css';
 import Payment from './Components/payment/payment';
+import Login from './Components/Login/login';
+import Register from './Components/Login/Register';
 
 function App() {
     return (
@@ -12,7 +14,9 @@ function App() {
                 <Routes>
                 <Route path="/" element={<CustomerDashboard />} />
                 <Route path="/payment" element={<Payment />} />
-                </Routes>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                </Routes> 
             </CartProvider>
         </Router>
     )
