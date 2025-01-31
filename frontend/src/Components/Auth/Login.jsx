@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
     const navigate = useNavigate();
     const [identifier, setIdentifier] = useState("");
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,9 +21,7 @@ const Login = () => {
                 console.log("Login Successful:", response.data.user);
                 localStorage.setItem("authToken", response.data.token);
                 localStorage.setItem("loginTime", new Date().getTime().toString());
-
                 localStorage.setItem("user", JSON.stringify(response.data.user));
-
                 navigate('/');
             } else {
                 alert(response.data.message);
@@ -30,6 +30,10 @@ const Login = () => {
             console.error("Login Error:", error.response ? error.response.data : error);
             alert("Login failed. Please try again.");
         }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
     };
 
     return (
@@ -51,15 +55,21 @@ const Login = () => {
                     />
 
                     <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Enter your password" 
-                        required 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-
+                    <div className="password">
+                        <input 
+                            type={showPassword ? "text" : "password"} 
+                            id="password" 
+                            placeholder="Enter your password" 
+                            required 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {showPassword ? (
+                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
+                        ) : (
+                            <FaEyeSlash className="pass-icon" onClick={togglePasswordVisibility} />
+                        )}
+                    </div>
                     <button className='button' type="submit">Login</button>
                 </form>
                 <div className="alt-option">

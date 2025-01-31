@@ -21,20 +21,6 @@ const Profile = ({ onClose }) => {
         navigate("/login");
     };
 
-    // if (!user) {
-    //     return (
-    //         <div className="profile-container">
-    //             <div className="profile-header">
-    //                 <span className="profile-title">Profile</span>
-    //                 <IoMdClose className="close-icon" onClick={onClose} />
-    //             </div>
-    //             <div className="profile-details">
-    //                 <p>No user data found. Please log in.</p>
-    //             </div>
-    //         </div>
-    //     );
-    // }
-
     return (
         <div className="profile-container">
             <div className="profile-header">

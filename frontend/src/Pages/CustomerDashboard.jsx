@@ -5,7 +5,7 @@ import CategoryMenu from "../Components/CategoryMenu";
 import "./CustomerDashBoard.css";
 import FoodItems from "../Components/FoodItems";
 import FeatureFoodSlider from "../Components/FeatureFoodSilder";
-import ToggleSearch from "../Components/ToogleSearch";
+import ToggleSearch from "../Components/ToggleSearch";
 
 const CustomerDashBoard = () => {
     return(

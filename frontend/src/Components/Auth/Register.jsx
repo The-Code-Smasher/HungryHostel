@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import './Login.css';
 
@@ -10,6 +11,7 @@ const Register = () => {
     const [mobile, setMobile] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,6 +31,10 @@ const Register = () => {
             console.error("Registration Error:", error);
             alert("Registration failed. Please try again.");
         }
+    };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
     };
 
     return (
@@ -70,14 +76,21 @@ const Register = () => {
                     />
 
                     <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Enter your password" 
-                        required 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                    <div className="password">
+                        <input 
+                            type={showPassword ? "text" : "password"} 
+                            id="password" 
+                            placeholder="Enter your password" 
+                            required 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {showPassword ? (
+                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
+                        ) : (
+                            <FaEyeSlash className="pass-icon" onClick={togglePasswordVisibility} />
+                        )}
+                    </div>
 
                     <button className='button' type="submit">Register</button>
                 </form>
