@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CardContext';
+// import ProtectedRoute from './ProtectedRoute';
 import CustomerDashboard from './Pages/CustomerDashboard';
 import Payment from './Components/payment/payment';
 import Login from './Components/Auth/login';
@@ -10,7 +11,14 @@ function App() {
         <Router>
             <CartProvider>
                 <Routes>
-                    <Route path="/" element={<CustomerDashboard />} />
+                    <Route
+                        path="/"
+                        element={
+                            // <ProtectedRoute>
+                                <CustomerDashboard />
+                            // {/* </ProtectedRoute> */}
+                        }
+                    />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

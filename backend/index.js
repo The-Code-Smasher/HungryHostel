@@ -171,7 +171,6 @@ app.post('/login', async (req, res) => {
         const { identifier, password } = req.body;
         console.log("🔹 Received login request for email:", identifier); 
 
-        // const user = await UserModel.findOne({ email });
         const user = await UserModel.findOne({
             $or: [
                 { email: identifier },

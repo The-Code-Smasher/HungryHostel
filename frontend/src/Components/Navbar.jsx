@@ -5,15 +5,21 @@ import { useCart } from "../context/CardContext";
 import Logo from "../assets/logo.png";
 import Basket from "../assets/purchase.png";
 import Cart from "./Card";
+import Profile from "./Profile";
 
 const Navbar = () => {
     const { getTotalCount } = useCart();
     const totalItems = getTotalCount();
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isProfileOpen, setProfileOpen] = useState(false);
 
     const handleCartClick = () => {
         setIsCartOpen(!isCartOpen);
     };
+
+    const handleProfileClick = () => {
+        setProfileOpen(!isProfileOpen);
+    }
 
     return (
         <>
@@ -32,14 +38,14 @@ const Navbar = () => {
                         <img src={Basket} alt="Basket" height={50} width={50} />
                         {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                     </span>
-                    <span className="profile">
+                    <span className="profile" onClick={handleProfileClick}>
                         <FaCircle />
                     </span>
                 </div>
             </div>
 
-            {/* Cart popup appears when isCartOpen is true */}
             {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
+            {isProfileOpen && <Profile onClose={() => setProfileOpen(false)}/>}
         </>
     );
 };

@@ -30,15 +30,6 @@ const Register = () => {
             alert("Registration failed. Please try again.");
         }
     };
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //     axios.post('http://localhost:3000/register', {username,mobile, email, password})
-    //     .then(result => console.log(result)
-    //     )
-    //     .catch(err => console.log(err)
-    //     )
-    // };
 
     return (
         <div className="auth-container">
