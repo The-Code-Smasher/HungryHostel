@@ -5,10 +5,12 @@ import CategoryMenu from "../Components/CategoryMenu";
 import "./CustomerDashBoard.css";
 import FoodItems from "../Components/FoodItems";
 import FeatureFoodSlider from "../Components/FeatureFoodSilder";
+import ToggleSearch from "../Components/ToogleSearch";
 
 const CustomerDashBoard = () => {
     return(
         <>
+            <ToggleSearch />
             <Navbar />
             <div className="home-container" style={{ backgroundImage: `url(${item1})`}}></div>
             <FeatureFoodSlider/>

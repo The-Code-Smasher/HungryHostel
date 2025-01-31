@@ -44,7 +44,6 @@
     scrollbar-color: #ccc transparent;
 }
 
-/* Scrollbar Styling */
 .cart-items::-webkit-scrollbar {
     width: 6px;
 }

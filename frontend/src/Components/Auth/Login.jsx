@@ -5,8 +5,7 @@ import './Login.css';
 
 const Login = () => {
     const navigate = useNavigate();
-    // const [email, setEmail] = useState('');
-    const [identifier, setIdentifier] = useState(""); // Can be email, username, or mobile
+    const [identifier, setIdentifier] = useState("");
     const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
@@ -18,6 +17,11 @@ const Login = () => {
 
             if (response.data.message === "Success") {
                 console.log("Login Successful:", response.data.user);
+                localStorage.setItem("authToken", response.data.token);
+                localStorage.setItem("loginTime", new Date().getTime().toString());
+
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+
                 navigate('/');
             } else {
                 alert(response.data.message);
@@ -36,11 +40,11 @@ const Login = () => {
             </div>
             <div className="form-container" id="login">
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="identifier">Email/Username/Phone</label>
                     <input 
                         type="text" 
-                        id="text" 
-                        placeholder="Enter your email, username or phone no." 
+                        id="identifier" 
+                        placeholder="Enter your email, username, or phone no." 
                         required 
                         value={identifier}
                         onChange={(e) => setIdentifier(e.target.value)}
