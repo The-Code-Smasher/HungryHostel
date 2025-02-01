@@ -65,9 +65,9 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {showPassword ? (
-                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
-                        ) : (
                             <FaEyeSlash className="pass-icon" onClick={togglePasswordVisibility} />
+                        ) : (
+                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
                         )}
                     </div>
                     <button className='button' type="submit">Login</button>
