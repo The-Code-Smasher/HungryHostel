@@ -19,6 +19,7 @@ body {
     width: 170px;
     height: 60px;
     cursor: pointer;
+    
 }
 
 .search {
@@ -28,6 +29,7 @@ body {
     max-width: 500px;
     margin: 0 20px;
     position: relative; 
+    background-color:transparent;
 }
 
 .search input {
@@ -48,22 +50,24 @@ body {
 .search button {
     position: absolute;
     right: 5px; 
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
     cursor: pointer;
     font-size: 25px;
     color: #555;
-    padding-left: 60px;
+    /* padding-left: 60px; */
 }
 
 .search button:hover {
     color: #000;
+    background: none;
 }
 
 .profile{
     padding-left: 30px;
+    background-color:transparent;
 }
 
 .shopping-bsk, .profile{
@@ -93,6 +97,7 @@ body {
 .cart-icon {
     position: relative;
     cursor: pointer;
+    background-color:transparent;
 }
 
 .cart-count {
@@ -104,4 +109,5 @@ body {
     border-radius: 50%;
     padding: 3px 7px;
     font-size: 12px;
+    
 }
