@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CardContext';
-import ProtectedRoute from './ProtectedRoute';
+//import ProtectedRoute from './ProtectedRoute';
 import CustomerDashboard from './Pages/CustomerDashboard';
 import Payment from './Components/payment/payment';
 import Login from './Components/Auth/login';
@@ -14,9 +14,9 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            <ProtectedRoute>
+    //                        <ProtectedRoute>
                                 <CustomerDashboard />
-                            </ProtectedRoute>
+        //                    </ProtectedRoute>
                         }
                     />
                     <Route path="/payment" element={<Payment />} />
