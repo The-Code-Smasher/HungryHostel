@@ -12,7 +12,12 @@ const CustomerDashBoard = () => {
         <>
             <ToggleSearch />
             <Navbar />
-            <div className="home-container" style={{ backgroundImage: `url(${item1})`}}></div>
+            <div className="home-container" style={{ backgroundImage: `url(${item1})`}}>
+                <div className="dashboard-content">
+                    <h1 className="hungryhst">HUNGRY HOSTEL</h1>
+                    <h4 className="slogan">SATISY YOUR CRAVING WITHIN CAMPUS !</h4>
+                </div>
+            </div>
             <FeatureFoodSlider/>
             <CategoryMenu />
             <FoodItems />

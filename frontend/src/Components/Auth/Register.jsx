@@ -86,9 +86,9 @@ const Register = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         {showPassword ? (
-                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
-                        ) : (
                             <FaEyeSlash className="pass-icon" onClick={togglePasswordVisibility} />
+                        ) : (
+                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
                         )}
                     </div>
 
