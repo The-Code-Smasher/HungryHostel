@@ -1,18 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
 
-.home-container {
-    position: relative;
-    display: flex;
-    min-height: 600px;
-    width: 100%;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: bottom ;
-    background-repeat: no-repeat;
-    margin-top: -100px;
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
+/* 🔹 HERO SECTION */
+.home-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70vh; /* Always cover full screen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 20px;
+    margin-top: -100px;
+}
+
+/* 🔹 Prevent Image Moving Down */
+@media (max-width: 1024px) {
+    .home-container {
+        min-height: 80vh;  /* Slightly reduce height */
+        background-attachment: scroll; /* Fix mobile image shifting */
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        min-height: 40vh;
+    }
+}
+
+/* 🔹 DARK OVERLAY */
 .home-container::before {
     content: "";
     position: absolute;
@@ -24,35 +54,63 @@
     z-index: 1;
 }
 
+/* Ensures text is above overlay */
 .home-container * {
     position: relative;
     z-index: 2;
 }
 
+/* 🔹 TITLE & SLOGAN */
 .dashboard-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    text-align: center;
 }
 
+/* HUNGRY HOSTEL TITLE */
 .hungryhst {
     color: white;
     font-weight: 700;
-    font-size: 100px;
-    margin-bottom: -50px;
+    font-size: 90px;
+    margin-bottom: -20px;
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6), 
                  2px 2px 5px rgba(255, 255, 255, 0.3);
-    font-family: 'Poppins', sans-serif;
 }
 
+/* SLOGAN */
 .slogan {
     color: white;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 28px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
                  1px 1px 4px rgba(255, 255, 255, 0.2);
-    font-family: 'Poppins', sans-serif;
+}
+
+/* 🔹 RESPONSIVE FONT SIZES */
+@media (max-width: 1024px) {
+    .hungryhst {
+        font-size: 70px;
+    }
+    .slogan {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hungryhst {
+        font-size: 50px;
+        margin-bottom: -10px;
+    }
+    .slogan {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hungryhst {
+        font-size: 40px;
+    }
+    .slogan {
+        font-size: 18px;
+    }
 }

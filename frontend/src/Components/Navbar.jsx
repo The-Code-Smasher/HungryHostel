@@ -19,33 +19,40 @@ const Navbar = () => {
 
     const handleProfileClick = () => {
         setProfileOpen(!isProfileOpen);
-    }
+    };
 
     return (
         <>
             <div className="navbar">
-                <div className="logo">
-                    <img src={Logo} alt="logo" width={100} />
-                </div>
-                <div className="search">
-                    <input type="search" placeholder="Search" />
-                    <button>
-                        <FaSearch />
-                    </button>
-                </div>
-                <div>
-                    <span className="shopping-bsk cart-icon" onClick={handleCartClick}>
-                        <img src={Basket} alt="Basket" height={50} width={50} />
-                        {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
-                    </span>
-                    <span className="profile" onClick={handleProfileClick}>
-                        <FaCircle />
-                    </span>
+                {/* Everything stays in one row on desktop */}
+                <div className="navbar-content">
+                    <div className="logo">
+                        <img src={Logo} alt="logo" />
+                    </div>
+
+                    {/* Search bar */}
+                    <div className="search">
+                        <input type="search" placeholder="Search" />
+                        <button>
+                            <FaSearch />
+                        </button>
+                    </div>
+
+                    {/* Cart and Profile */}
+                    <div className="nav-icons">
+                        <span className="shopping-bsk cart-icon" onClick={handleCartClick}>
+                            <img src={Basket} alt="Basket" height={50} width={50} />
+                            {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
+                        </span>
+                        <span className="profile" onClick={handleProfileClick}>
+                            <FaCircle />
+                        </span>
+                    </div>
                 </div>
             </div>
 
             {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
-            {isProfileOpen && <Profile onClose={() => setProfileOpen(false)}/>}
+            {isProfileOpen && <Profile onClose={() => setProfileOpen(false)} />}
         </>
     );
 };
