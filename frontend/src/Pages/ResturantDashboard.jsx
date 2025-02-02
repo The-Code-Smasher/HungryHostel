@@ -2,7 +2,10 @@ import React from 'react'
 
 const ResturantDashboard = () => {
   return (
-    <div>ResturantDashboard</div>
+    <div>
+      
+
+    </div>
   )
 }
 
