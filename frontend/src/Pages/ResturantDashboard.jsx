@@ -1,12 +1,14 @@
 import React from 'react';
 import "./ResturantDashboard.css";
+import chole from "../assets/chole.png";
+import image from "../assets/image.jpeg";
 
 const RestaurantDashboard = () => {
   return (
     <div>
       {/* Navbar */}
       <div className="navbar">
-        <img src="/chole.png" alt="Restaurant Logo" />
+        <img src={chole} alt="Restaurant Logo" />
         <div className="nav-buttons">
           <button className="post">Post</button>
           <button className="logout">Logout</button>
@@ -20,7 +22,7 @@ const RestaurantDashboard = () => {
 
         {/* Restaurant Info Section */}
         <div className="restaurant-container">
-          <img src="/image.jpeg" alt="Restaurant Image" className="restaurant-img" />
+          <img src={image} alt="Restaurant Image" className="restaurant-img" />
           <div className="restaurant-text">
             <h2>Restaurant Name</h2>
             <p>Best place to enjoy delicious meals!</p>
@@ -37,7 +39,7 @@ const RestaurantDashboard = () => {
 
         {/* Food Card */}
         <div className="food-card">
-          <img src="/chole.png" alt="Posted Food" />
+          <img src={chole} alt="Posted Food" />
           <h3>Delicious Meal</h3>
           <p>Description of the food item goes here. Ingredients, taste, and more details.</p>
           <p><strong>Price: $10</strong></p>
