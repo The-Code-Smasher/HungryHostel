@@ -1,4 +1,105 @@
-.navbar{
+/* .navbar{
     height: 100px;
     background: transparent;
+} */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+body {
+    text-align: center;
+}
+.post, .logout, .f_buttons{
+    width: 90px;
+    /* margin-right: 10px; */
+
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    height: 50px;
+}
+.navbar img {
+    height: 50px;
+}
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+.nav-buttons button {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.nav-buttons button:hover {
+    background-color: #cc5500;
+}
+.container {
+    color: aliceblue;
+}
+.restaurant-img {
+    width: 100%;
+    height: 60vh;
+    opacity: 0.5;
+}
+
+.restaurant-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    background: transparent;
+}
+
+.restaurant-text > p,h2{
+    background: transparent;
+}
+
+.filter-buttons {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.filter-buttons button {
+    background-color:#ff6600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.filter-buttons button:hover {
+    background-color: #0056b3;
+}
+.food-card {
+    background: black;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    border: 0.5px solid white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: left;
+}
+.food-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+.food-card h3 {
+    margin: 10px 0;
 }
