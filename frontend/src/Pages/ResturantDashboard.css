@@ -1,12 +1,13 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     background-color: black;
-}
+} */
 body {
-    text-align: center;
+    /* text-align: center; */
+    background-color: black;
 }
 .post, .logout, .f_buttons{
     width: 90px;
