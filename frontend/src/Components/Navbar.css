@@ -4,90 +4,40 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Navbar Container */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 10px 20px;
-    background-color:transparent;
+    background-color: transparent;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* Logo */
 .logo img {
     width: 170px;
     height: 60px;
     cursor: pointer;
 }
 
-.search {
+/* Container for cart and profile */
+.navbar-content {
     display: flex;
     align-items: center;
-    flex-grow: 1;
-    max-width: 500px;
-    margin: 0 20px;
-    position: relative; 
-}
-
-.search input {
     width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding-right: 40px; 
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.search input::placeholder {
-    color: #999;
-}
-
-.search button {
-    position: absolute;
-    right: 5px; 
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-    color: #555;
-    padding-left: 60px;
-}
-
-.search button:hover {
-    color: #000;
-}
-
-.profile{
-    padding-left: 30px;
-}
-
-.shopping-bsk, .profile{
-    background-color: transparent;
-    color: white;
-    border: none;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;
-}
-
-.quantity-controls {
+/* Cart and Profile Icons */
+.nav-icons {
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-.quantity-controls button {
-    background: #ff4500;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+    gap: 20px;
 }
 
 .cart-icon {
@@ -104,4 +54,46 @@ body {
     border-radius: 50%;
     padding: 3px 7px;
     font-size: 12px;
+}
+
+.shopping-bsk,
+.profile {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* First Row: Logo + Cart + Profile */
+    .navbar-content {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 140px;
+        height: 50px;
+    }
+
+    .cart-icon img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .shopping-bsk,
+    .profile {
+        font-size: 25px;
+    }
 }

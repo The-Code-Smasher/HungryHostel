@@ -10,14 +10,41 @@ import item4 from "../assets/item4.png";
 
 const FeatureFoodSlider = () => {
     const settings = {
-        dots: false, 
+        dots: false,
         infinite: true,
         speed: 900,
-        slidesToShow: 6,
+        slidesToShow: 7,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
-    };      
+        responsive: [
+            {
+                breakpoint: 1200, // Large screens
+                settings: {
+                    slidesToShow: 4,
+                },
+            },
+            {
+                breakpoint: 992, // Medium screens (tablets)
+                settings: {
+                    slidesToShow: 3,
+                },
+            },
+            {
+                breakpoint: 768, // Small screens (mobile landscape)
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 480, // Extra small screens (mobile portrait)
+                settings: {
+                    slidesToShow: 1,
+                },
+            },
+        ],
+    };
+      
 
     const foodItems = [
         { id: 1, name: "Pizza", image: item1 },
@@ -34,9 +61,9 @@ const FeatureFoodSlider = () => {
             <h3 className="ctg-title">Featured Food Items</h3>
             <Slider {...settings}>
                 {foodItems.map((item) => (
-                <div key={item.id} className="slide">
-                    <img src={item.image} alt={item.name} className="food-image" />
-                    <h3 className="food-name">{item.name}</h3>
+                <div className="SlideOut" key={item.id} >
+                   <div className="slide"> <img src={item.image} alt={item.name} className="food-image" />
+                   <h3 className="food-name">{item.name}</h3></div>
                 </div>
                 ))}
             </Slider>

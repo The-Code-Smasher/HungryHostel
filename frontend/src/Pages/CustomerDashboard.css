@@ -1,18 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 
-.home-container {
-    position: relative;
-    display: flex;
-    min-height: 600px;
-    width: 100%;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: bottom ;
-    background-repeat: no-repeat;
-    margin-top: -100px;
+.search{
+    height: 40px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
     font-family: 'Poppins', sans-serif;
 }
 
+/* 🔹 HERO SECTION */
+.home-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 70vh; /* Always cover full screen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 20px;
+    margin-top: -100px;
+}
+
+
+
+/* 🔹 DARK OVERLAY */
 .home-container::before {
     content: "";
     position: absolute;
@@ -24,35 +44,189 @@
     z-index: 1;
 }
 
+/* Ensures text is above overlay */
 .home-container * {
     position: relative;
     z-index: 2;
 }
 
+
+/* 🔹 TITLE & SLOGAN */
 .dashboard-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto;
     text-align: center;
+    width: 100%;
+    line-height: 35px;
+    /* padding-bottom: 100px; */
 }
 
+/* HUNGRY HOSTEL TITLE */
 .hungryhst {
+    width: 100%;
     color: white;
     font-weight: 700;
-    font-size: 100px;
-    margin-bottom: -50px;
+    font-size: 90px;
+    margin-bottom: -20px;
     text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6), 
                  2px 2px 5px rgba(255, 255, 255, 0.3);
-    font-family: 'Poppins', sans-serif;
+    max-width: 90%; /* Ensures the title scales properly */
 }
 
+/* SLOGAN */
 .slogan {
     color: white;
     font-weight: 500;
-    font-size: 30px;
+    font-size: 38px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
                  1px 1px 4px rgba(255, 255, 255, 0.2);
-    font-family: 'Poppins', sans-serif;
+    max-width: 90%; /* Ensures it does not exceed title width */
+    padding: 0 10px; /* Adjusts spacing dynamically */
+    text-align: center;
 }
+/* Search Bar Below Slogan */
+.dashboard-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%; /* Matches the width of slogan */
+    max-width: 600px; /* Prevents it from becoming too large */
+    margin-top: 20px;
+    position: relative;
+    /* padding-bottom:40px ; */
+    margin-bottom: 40px;
+    /* transform: translateY(-50%, -60%); */
+}
+
+.dashboard-search input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded Corners */
+    outline: none;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding-right: 45px; /* Ensures space for button */
+    /* transform: translateY(-50%, -60%); */
+}
+
+.dashboard-search input::placeholder {
+    color: #777;
+}
+
+/* Search Button */
+.dashboard-search button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%, -40%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.dashboard-search button:hover {
+    color: #000;
+}
+
+/* 🔹 Prevent Image Moving Down */
+@media (max-width: 1024px) {
+    .home-container {
+        min-height: 80vh;  
+        background-attachment: scroll; 
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        min-height: 40vh;
+        padding-right: 0;
+        margin-right: 0px;
+        overflow: hidden;
+    }
+}
+/* 🔹 RESPONSIVE FONT & WIDTH ADJUSTMENTS */
+@media (max-width: 1024px) {
+    .hungryhst {
+        font-size: 70px;
+        max-width: 80%;
+    }
+    .slogan {
+        font-size: 30px;
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .hungryhst {
+        font-size: 40px;
+        max-width: 75%;
+        margin-bottom: -10px;
+    }
+    .slogan {
+        font-size: 17px;
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .hungryhst {
+        font-size: 30px;
+        max-width: 90%;
+    }
+    .slogan {
+        font-size: 13px;
+        max-width: 90%;
+        padding: 2px;
+        margin: 2px;
+    }
+
+}
+
+
+
+
+/* 🔹 RESPONSIVE DESIGN FOR SEARCHBAR */
+
+@media (max-width: 1024px){
+
+    .dashboard-search {
+        width: 50%;
+    }
+
+}
+@media (max-width: 768px) {
+    .dashboard-search {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-content{
+        margin-top: 30px;
+    }
+    .dashboard-search {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        margin: 0;
+        width: 50%;
+    }
+    .dashboard-search input {
+        font-size: 14px;
+        padding: 10px;
+    }
+    .dashboard-search button {
+        font-size: 18px;
+    }
+}
+
