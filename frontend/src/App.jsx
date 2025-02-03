@@ -5,6 +5,9 @@ import CustomerDashboard from './Pages/CustomerDashboard';
 import Payment from './Components/payment/payment';
 import Login from './Components/Auth/login';
 import Register from './Components/Auth/Register';
+import ProductList from "./Components/ProductList";
+import ProductForm from "./Components/ProductForm";
+
 
 function App() {
     return (
@@ -14,18 +17,22 @@ function App() {
                     <Route
                         path="/"
                         element={
-                            //<ProtectedRoute>
+                            // <ProtectedRoute>
                                 <CustomerDashboard />
-                            //</ProtectedRoute>
+                            // </ProtectedRoute>
                         }
                     />
                     <Route path="/payment" element={<Payment />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/addProduct" element={<ProductForm />} />
+                    <Route path="/listProducts" element={<ProductList />} />
                 </Routes>
             </CartProvider>
         </Router>
     );
 }
+
+
 
 export default App;
