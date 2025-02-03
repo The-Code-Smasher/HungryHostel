@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCircle, FaSearch } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa";
 import "./Navbar.css";
 import { useCart } from "../context/CardContext";
 import Logo from "../assets/logo.png";
@@ -28,14 +28,6 @@ const Navbar = () => {
                 <div className="navbar-content">
                     <div className="logo">
                         <img src={Logo} alt="logo" />
-                    </div>
-
-                    {/* Search bar */}
-                    <div className="search">
-                        <input type="search" placeholder="Search" />
-                        <button>
-                            <FaSearch />
-                        </button>
                     </div>
 
                     {/* Cart and Profile */}

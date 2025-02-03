@@ -11,7 +11,7 @@
 }
 
 .ctg-title {
-    color: #2e2e2e;
+    color: #8a8989;
     font-size: 30px;
     font-weight: 600;
 }
@@ -73,10 +73,12 @@
     }
 
     .food-ctg {
+        flex-wrap: wrap;
         justify-content: start;
     }
 
     .ctg-all {
+       
         padding: 0.5rem 1rem;
         font-size: 12px;
     }
