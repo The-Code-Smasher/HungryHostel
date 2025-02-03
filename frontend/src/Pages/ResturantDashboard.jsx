@@ -16,7 +16,7 @@ const RestaurantDashboard = () => {
       </div>
 
       {/* Main Container */}
-      <div className="container">
+      <div className="rest-container">
         <h1>Welcome, Restaurant Owner!</h1>
         <br />
 
@@ -38,7 +38,7 @@ const RestaurantDashboard = () => {
         </div>
 
         {/* Food Card */}
-        <div className="food-card">
+        <div className="food-card-rest">
           <img src={chole} alt="Posted Food" />
           <h3>Delicious Meal</h3>
           <p>Description of the food item goes here. Ingredients, taste, and more details.</p>

@@ -7,6 +7,8 @@
 } */
 body {
     /* text-align: center; */
+    margin: 0;
+    padding: 0;
     background-color: black;
 }
 .post, .logout, .f_buttons{
@@ -17,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background: transparent;
-    height: 50px;
+    height: 40px;
 }
 .navbar img {
     height: 50px;
@@ -37,8 +39,9 @@ body {
 .nav-buttons button:hover {
     background-color: #cc5500;
 }
-.container {
+.rest-container {
     color: aliceblue;
+    text-align: center;
 }
 .restaurant-img {
     width: 100%;
@@ -48,7 +51,7 @@ body {
 
 .restaurant-text {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -61,6 +64,11 @@ body {
 
 .restaurant-text > p,h2{
     background: transparent;
+    margin: 0px;
+}
+
+.restaurant-text > p{
+    font-size: 20px;
 }
 
 .filter-buttons {
@@ -78,20 +86,22 @@ body {
     border-radius: 5px;
 }
 .filter-buttons button:hover {
-    background-color: #0056b3;
+    background-color: #cc5500;
 }
-.food-card {
-    background: black;
+.food-card-rest {
+    background: rgb(19, 18, 18);
     padding: 20px;
     margin: 20px auto;
     width: 80%;
-    max-width: 400px;
+    height: 320px;
+    max-width: 200px;
     border-radius: 10px;
     border: 0.5px solid white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: white;
+    box-shadow: 0 0 10px white;
     text-align: left;
 }
-.food-card img {
+.food-card-rest img {
     width: 100%;
     border-radius: 10px;
 }
