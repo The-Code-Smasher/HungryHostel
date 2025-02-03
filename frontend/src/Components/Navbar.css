@@ -24,55 +24,13 @@ body {
     cursor: pointer;
 }
 
-/* Container for search bar, cart, and profile */
+/* Container for cart and profile */
 .navbar-content {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
     gap: 20px;
-}
-
-/* Search Bar */
-.search {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-width: 500px;
-    margin: 0 20px;
-    position: relative;
-    width: 100%;
-}
-
-.search input {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-    font-size: 14px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding-right: 40px;
-}
-
-.search input::placeholder {
-    color: #999;
-}
-
-.search button {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 25px;
-    color: #555;
-}
-
-.search button:hover {
-    color: #000;
 }
 
 /* Cart and Profile Icons */
@@ -121,12 +79,6 @@ body {
         justify-content: space-between;
         padding: 10px 20px;
     }
-
-   
-    .search {
-        width: 100%;
-        margin-top: 10px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -140,19 +92,8 @@ body {
         height: 40px;
     }
 
-    .search input {
-        font-size: 12px;
-        padding: 8px;
-    }
-
-    .search button {
-        font-size: 20px;
-        padding-left: 40px;
-    }
-
     .shopping-bsk,
     .profile {
         font-size: 25px;
     }
 }
-

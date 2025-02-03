@@ -1,7 +1,7 @@
 .food-card {
     display: flex;
     width: 90%;
-    margin: 20px;
+    /* margin: 20px; */
     flex-direction: column;
     background: white;
     border-radius: 12px;
@@ -54,6 +54,7 @@
 
 .add-to-cart {
     background-color: #ff6f0f;
+    width: 120px;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -87,6 +88,18 @@
 
 @media (max-width: 768px) {
     .food-grid {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+    .food-image {
+        width: 150px;
+        height: 150px;
+        /* object-fit: cover; */
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
+}
+@media (max-width: 480px){
+    .food-grid{
         grid-template-columns: repeat(1, minmax(200px, 1fr));
     }
 }

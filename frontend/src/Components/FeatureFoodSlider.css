@@ -1,8 +1,8 @@
 .slider-container {
     width: 95%;
     margin: auto;
-    gap: 30px;
 }
+
 
 .slide {
     width: 200px;
@@ -10,6 +10,7 @@
     text-align: center;
     padding: 20px;
 }
+
 
 .food-image {
     justify-content: center;
@@ -25,7 +26,7 @@
 }
 
 .food-name {
-    
+    color: rgb(106, 103, 103);
     font-size: 20px;
     font-weight: bold;
     margin-top: 10px;
@@ -35,6 +36,7 @@
         width: 200px !important;
         height: 200px !important;
         padding: 20px;
+        text-align: center;
     }
     .food-name {
         font-size: 16px;
@@ -55,7 +57,9 @@
     }
 
     .food-image {
-        max-width: 200px;
+        width: 250px;
+        height: 250px;
+        
         justify-content: center;
     }
     .slider-container{
@@ -66,10 +70,9 @@
         width: 200px !important;
         height: 200px !important;
         text-align: center;
-        padding: 20px;
         flex: 0 0 auto; 
         justify-content: center;
         padding: 20px;
-        margin: auto;
+        align-items: center;
     }
 }
