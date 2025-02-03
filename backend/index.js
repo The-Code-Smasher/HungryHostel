@@ -7,7 +7,10 @@ import axios from "axios";
 import crypto from "crypto";
 // import userRoutes from "./routes/userRoutes.js";
 import { connectDB } from "./config/db.js";
-import UserModel from "./models/User.js";
+import UserModel from "./models/user.js";
+import RestaurantModel from "./models/Restaurant.js";
+import ProductModel from "./models/Product.js";
+import OrderModel from "./models/Order.js";
 import bcrypt from "bcryptjs";
 
 dotenv.config();
@@ -17,7 +20,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cors({ origin: "http://localhost:5173" }));
 connectDB();
 
 let salt_key = '96434309-7796-489d-8924-ab56988a6076';
@@ -224,6 +227,43 @@ app.post('/register', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+app.post("/addProducts", async (req, res) => {
+    try {
+      const { name, category, price, description, stock, status, images } = req.body;
+      
+      // Validate required fields
+      if (!name || !category || !price || !description) {
+        return res.status(400).json({ message: "Please provide all required fields." });
+      }
+  
+      // Create new product
+      const newProduct = new ProductModel({
+        name,
+        category,
+        price,
+        description,
+        stock,
+        status,
+        images,
+      });
+  
+      // Save product to database
+      await newProduct.save();
+      res.status(201).json({ message: "Product created successfully", product: newProduct });
+    } catch (error) {
+        console.log(error)
+    }
+  });
+  app.get("/listProducts", async (req, res) => {
+    try {
+      const products = await ProductModel.find();
+      res.status(200).json(products);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch products" });
+    }
+  });
+  
 
 
 app.get("/api/protected", authMiddleware, (req, res) => {
