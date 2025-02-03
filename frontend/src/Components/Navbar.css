@@ -95,5 +95,7 @@ body {
     .shopping-bsk,
     .profile {
         font-size: 25px;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 }

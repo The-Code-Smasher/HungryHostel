@@ -1,6 +1,6 @@
 import React from 'react';
 import "./ResturantDashboard.css";
-import chole from "../assets/chole.png";
+import logo from "../assets/logo.png";
 import image from "../assets/image.jpeg";
 
 const RestaurantDashboard = () => {
@@ -8,7 +8,7 @@ const RestaurantDashboard = () => {
     <div>
       {/* Navbar */}
       <div className="navbar">
-        <img src={chole} alt="Restaurant Logo" />
+        <img src={logo} alt="Restaurant Logo" />
         <div className="nav-buttons">
           <button className="post">Post</button>
           <button className="logout">Logout</button>
@@ -39,7 +39,7 @@ const RestaurantDashboard = () => {
 
         {/* Food Card */}
         <div className="food-card-rest">
-          <img src={chole} alt="Posted Food" />
+          <img src={logo} alt="Posted Food" />
           <h3>Delicious Meal</h3>
           <p>Description of the food item goes here. Ingredients, taste, and more details.</p>
           <p><strong>Price: $10</strong></p>
