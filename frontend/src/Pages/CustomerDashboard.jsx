@@ -11,13 +11,13 @@ import { FaSearch } from "react-icons/fa";
 const CustomerDashBoard = () => {
     return (
         <>
+            
             <ToggleSearch />
             <Navbar />
             <div className="home-container" style={{ backgroundImage: `url(${item1})` }}>
                 <div className="dashboard-content">
                     <h1 className="hungryhst">HUNGRY HOSTEL</h1>
                     <h4 className="slogan">SATISFY YOUR CRAVING WITHIN CAMPUS!</h4>
-                    
                     {/* Search Bar */}
                     <div className="dashboard-search">
                         <input className="search" type="search" placeholder="Search food items..." />

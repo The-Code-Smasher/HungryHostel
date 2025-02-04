@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
@@ -7,7 +7,16 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState({});
+    const [cart, setCart] = useState(() => {
+        
+        const savedCart = localStorage.getItem("cart");
+        return savedCart ? JSON.parse(savedCart) : {};
+    });
+
+    
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
     
     const getTotalCount = () => {
         return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
@@ -38,9 +47,11 @@ export const CartProvider = ({ children }) => {
     };
 
     const removeFromCart = (id) => {
-        const updatedCart = { ...cart };
-        delete updatedCart[id];
-        setCart(updatedCart);
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+            delete updatedCart[id];
+            return updatedCart;
+        });
     };
 
     const calculateTotal = () => {

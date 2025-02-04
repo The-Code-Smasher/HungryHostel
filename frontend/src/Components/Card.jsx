@@ -42,8 +42,8 @@ const Cart = ({ onClose }) => {
             </div>
 
             <div className="cart-footer">
-                <h3>Items: {Object.keys(cart).length}</h3>
-                <h3>Total Amount: ₹{calculateTotal()}</h3>
+                <h3 className="cart-entity">Items: {Object.keys(cart).length}</h3>
+                <h3 className="cart-entity">Total Amount: ₹{calculateTotal()}</h3>
                 <hr className="divider" />
                 <button className="checkout-btn" onClick={handleCheckout}>
                     Checkout

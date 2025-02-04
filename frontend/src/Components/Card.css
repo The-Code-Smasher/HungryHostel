@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
+    font-weight: 600;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
 }
@@ -78,14 +78,16 @@
 
 .item-price {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     color: #333;
+    padding-right: 10px;
 }
 
 .item-quantity {
     font-size: 0.9rem;
-    font-weight: bold;
+    font-weight: 600;
     color: #666;
+    padding-right: 20px;
     margin-left: 8px;
 }
 
@@ -106,6 +108,10 @@
     border-top: 1px solid #ddd;
 }
 
+.cart-entity{
+    font-weight: 600;
+}
+
 .divider {
     margin: 10px 0;
     border: none;
@@ -119,7 +125,7 @@
     background-color: #ff6600;
     color: white;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
     border: none;
     border-radius: 6px;
     cursor: pointer;
