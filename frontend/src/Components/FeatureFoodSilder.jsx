@@ -58,7 +58,7 @@ const FeatureFoodSlider = () => {
 
     return (
         <div className="slider-container">
-            <h3 className="ctg-title">Featured Food Items</h3>
+            <h3 className="slider-title">Featured Food Items</h3>
             <Slider {...settings}>
                 {foodItems.map((item) => (
                 <div className="SlideOut" key={item.id} >

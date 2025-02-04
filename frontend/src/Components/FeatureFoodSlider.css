@@ -11,6 +11,27 @@
     padding: 20px;
 }
 
+.slider-title {
+    color: rgb(47, 47, 47);
+    font-size: 15px;
+    padding-top: 30px;
+    font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.slider-title::before,
+.slider-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background-color: rgb(47, 47, 47);
+    margin: 0 10px;
+}
 
 .food-image {
     justify-content: center;
@@ -26,9 +47,9 @@
 }
 
 .food-name {
-    color: rgb(106, 103, 103);
+    color: rgb(255 241 217);
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     margin-top: 10px;
 }
 @media (max-width: 768px) {
