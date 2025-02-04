@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
-html, body {
+/* html, body {
     max-width: 100%;
     overflow-x: hidden;
-}
+} */
 
 .search{
     height: 40px;
@@ -81,8 +81,8 @@ body {
     font-size: 38px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
                  1px 1px 4px rgba(255, 255, 255, 0.2);
-    max-width: 90%; /* Ensures it does not exceed title width */
-    padding: 0 10px; /* Adjusts spacing dynamically */
+    max-width: 90%; 
+    padding: 0 10px;
     text-align: center;
 }
 /* Search Bar Below Slogan */
@@ -90,11 +90,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%; /* Matches the width of slogan */
-    max-width: 600px; /* Prevents it from becoming too large */
+    width: 90%; 
+    max-width: 600px;
     margin-top: 20px;
     position: relative;
-    /* padding-bottom:40px ; */
+    padding-bottom:40px ;
     margin-bottom: 40px;
     /* transform: translateY(-50%, -60%); */
 }
