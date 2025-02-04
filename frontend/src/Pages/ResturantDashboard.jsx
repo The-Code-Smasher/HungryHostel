@@ -1,6 +1,5 @@
-import React from 'react';
-import "./ResturantDashboard.css";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Use navigate for routing
 import chole from "../assets/chole.png";
 import image from "../assets/image.jpeg";
 

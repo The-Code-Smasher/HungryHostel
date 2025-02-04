@@ -14,21 +14,22 @@ body {
 .post, .logout, .f_buttons{
     width: 90px;
 }
-.navbar {
+.navbar-rest {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: transparent;
+    margin: 10px;
     height: 40px;
 }
-.navbar img {
+.navbar-rest img {
     height: 50px;
 }
-.nav-buttons {
+.nav-rest-buttons {
     display: flex;
     gap: 10px;
 }
-.nav-buttons button {
+.nav-rest-buttons button {
     background-color: #ff6600;
     color: white;
     border: none;
@@ -36,7 +37,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
-.nav-buttons button:hover {
+.nav-rest-buttons button:hover {
     background-color: #cc5500;
 }
 .rest-container {
@@ -98,14 +99,15 @@ body {
     border-radius: 10px;
     border: 0.5px solid white;
     color: white;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 5px white;
     text-align: left;
+    overflow-x: hidden;
 }
 .food-card-rest img {
     width: 100%;
     border-radius: 10px;
 }
-.food-card h3 {
+.food-card-rest h3 {
     margin: 10px 0;
 }
 
