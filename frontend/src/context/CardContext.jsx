@@ -22,29 +22,31 @@ export const CartProvider = ({ children }) => {
         return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
     };
 
-    const addToCart = (id, price) => {
-        setCart((prevCart) => ({
-            ...prevCart,
-            [id]: {
-                quantity: (prevCart[id]?.quantity || 0) + 1,
-                price,
-            },
-        }));
-    };
+    const addToCart = (productId, price) => {
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+            
+            if (updatedCart[productId]) {
+                updatedCart[productId].quantity += 1;
+            } else {
+                updatedCart[productId] = { quantity: 1, price }; // Add new product
+            }
+            
+            return updatedCart;
+        });
+    };    
 
-    const updateQuantity = (id, quantity) => {
-        if (quantity <= 0) {
-            removeFromCart(id);
-        } else {
-            setCart((prevCart) => ({
-                ...prevCart,
-                [id]: {
-                    ...prevCart[id],
-                    quantity,
-                },
-            }));
-        }
-    };
+    const updateQuantity = (productId, newQuantity) => {
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+    
+            if (updatedCart[productId]) {
+                updatedCart[productId].quantity = newQuantity;
+            }
+            
+            return updatedCart;
+        });
+    };    
 
     const removeFromCart = (id) => {
         setCart((prevCart) => {
