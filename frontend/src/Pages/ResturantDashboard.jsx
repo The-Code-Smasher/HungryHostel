@@ -1,5 +1,6 @@
 import React from 'react';
 import "./ResturantDashboard.css";
+// import { useCart } from "../context/CardContext";
 import chole from "../assets/chole.png";
 import image from "../assets/image.jpeg";
 
@@ -43,6 +44,7 @@ const RestaurantDashboard = () => {
           <h3>Delicious Meal</h3>
           <p>Description of the food item goes here. Ingredients, taste, and more details.</p>
           <p><strong>Price: $10</strong></p>
+          {/* <button onClick={() => addToCart("Delicious Meal", 10)}>Add to Cart</button> */}
         </div>
       </div>
     </div>
