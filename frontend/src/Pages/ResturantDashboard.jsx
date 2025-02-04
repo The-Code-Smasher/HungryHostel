@@ -7,9 +7,9 @@ const RestaurantDashboard = () => {
   return (
     <div>
       {/* Navbar */}
-      <div className="navbar">
+      <div className="navbar-rest">
         <img src={chole} alt="Restaurant Logo" />
-        <div className="nav-buttons">
+        <div className="nav-rest-buttons">
           <button className="post">Post</button>
           <button className="logout">Logout</button>
         </div>
