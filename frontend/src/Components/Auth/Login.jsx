@@ -42,7 +42,7 @@ const Login = () => {
                 <div className="tab" onClick={() => navigate('/register')}>Sign Up</div>
                 <div className="tab active">Login</div>
             </div>
-            <div className="form-container" id="login">
+            <div className="login-container" id="login">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="identifier">Email/Username/Phone</label>
                     <input 

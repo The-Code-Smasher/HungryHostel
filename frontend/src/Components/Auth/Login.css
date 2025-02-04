@@ -1,7 +1,8 @@
 .auth-container {
-    width: 350px;
-    margin: 100px auto;
+    width: 400px;
+    margin: 30vh auto;
     padding: 30px;
+    padding-right: 40px;
     background: #fff9f6;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
@@ -9,6 +10,7 @@
 
 .tabs {
     display: flex;
+    border: 1px solid rgb(161, 161, 161);
 }
 
 .tab {
@@ -16,7 +18,7 @@
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    background: #f0f0f0;
+    background: #fff9f6;
 }
 
 .tab.active {
@@ -25,8 +27,9 @@
     font-weight: bold;
 }
 
-.form-container {
+.login-container {
     margin-top: 20px;
+    background-color: #fff9f6;
 }
 
 form {
@@ -47,6 +50,12 @@ input {
     color: black;
     height: 20px;
     background-color: white;
+    width: 100%;
+}
+
+label{
+    font-weight: 600;
+    color: rgb(74, 74, 74);
 }
 
 .button {
