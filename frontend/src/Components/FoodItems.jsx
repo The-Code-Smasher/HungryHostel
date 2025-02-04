@@ -35,8 +35,8 @@ const FoodItems = () => {
 
     return (
         <div className="food-grid">
-            {products.map((item, index) => (
-                <FoodCard key={item._id || `food-${index}`} {...item} />
+            {products.map((item) => (
+                <FoodCard key={item._id} product={item} />
             ))}
         </div>
     );

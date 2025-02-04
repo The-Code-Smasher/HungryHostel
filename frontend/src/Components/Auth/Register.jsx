@@ -43,7 +43,7 @@ const Register = () => {
                 <div className="tab active">Sign Up</div>
                 <div className="tab" onClick={() => navigate('/login')}>Login</div>
             </div>
-            <div className="form-container" id="signup">
+            <div className="login-container" id="signup">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">User Name</label>
                     <input 

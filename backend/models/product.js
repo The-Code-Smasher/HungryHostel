@@ -7,18 +7,18 @@ const productSchema = new mongoose.Schema(
             required: true,
             trim: true,
             unique: true,
-            minLength: 3, // Adjusted from 10 to 3 for better usability
+            minLength: 3,
             lowercase: true,
         },
         category: {
             type: String,
             required: true,
-            enum: ["breakfast", "lunch", "dinner", "snacks", "Beverages"],
+            enum: ["breakfast", "lunch", "dinner", "snacks"],
         },
         price: {
             type: Number,
             required: true,
-            min: 0, // Ensures price cannot be negative
+            min: 0,
         },
         description: {
             type: String,
