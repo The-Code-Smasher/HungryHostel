@@ -24,13 +24,11 @@ const Navbar = () => {
     return (
         <>
             <div className="navbar">
-                {/* Everything stays in one row on desktop */}
                 <div className="navbar-content">
                     <div className="logo">
                         <img src={Logo} alt="logo" />
                     </div>
 
-                    {/* Cart and Profile */}
                     <div className="nav-icons">
                         <span className="shopping-bsk cart-icon" onClick={handleCartClick}>
                             <img src={Basket} alt="Basket" height={50} width={50} />

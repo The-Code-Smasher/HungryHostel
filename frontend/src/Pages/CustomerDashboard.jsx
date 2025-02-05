@@ -19,7 +19,7 @@ const CustomerDashBoard = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prevIndex) => (prevIndex + 1) % slideImages.length);
-        }, 2000); // 2 seconds per image
+        }, 5000);
 
         return () => clearInterval(interval);
     }, []);
