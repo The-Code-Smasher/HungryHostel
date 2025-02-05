@@ -38,12 +38,13 @@ const Register = () => {
     };
 
     return (
+        <div className="login-main">
         <div className="auth-container">
             <div className="tabs">
                 <div className="tab active">Sign Up</div>
                 <div className="tab" onClick={() => navigate('/login')}>Login</div>
             </div>
-            <div className="login-container" id="signup">
+            <div className="form-container" id="signup">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="username">User Name</label>
                     <input 
@@ -99,6 +100,7 @@ const Register = () => {
                     <button className='btn' onClick={() => navigate('/login')}>Login</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
