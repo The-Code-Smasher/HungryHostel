@@ -1,11 +1,38 @@
+.login-main {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/login.jpg'); /* Ensure path is correct */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(4px);
+    z-index: 1;
+}
+
 .auth-container {
     width: 400px;
-    margin: 30vh auto;
     padding: 30px;
     padding-right: 40px;
     background: #fff9f6;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+    z-index: 1;
 }
 
 .tabs {

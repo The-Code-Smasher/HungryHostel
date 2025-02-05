@@ -14,7 +14,7 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8000/login', { identifier, password });
+            const response = await axios.post("http://localhost:8000/login", { identifier, password });
             console.log("Server Response:", response.data);
 
             if (response.data.message === "Success") {
@@ -27,9 +27,10 @@ const Login = () => {
                 alert(response.data.message);
             }
         } catch (error) {
-            console.error("Login Error:", error.response ? error.response.data : error);
-            alert("Login failed. Please try again.");
-        }
+    console.error("Login Error:", error);
+    alert(error.response?.data?.message || "Login failed. Please try again.");
+}
+
     };
 
     const togglePasswordVisibility = () => {
@@ -37,6 +38,7 @@ const Login = () => {
     };
 
     return (
+        <div className="login-main">
         <div className="auth-container">
             <div className="tabs">
                 <div className="tab" onClick={() => navigate('/register')}>Sign Up</div>
@@ -71,11 +73,13 @@ const Login = () => {
                         )}
                     </div>
                     <button className='button' type="submit">Login</button>
+                    <button className='button' type="button" onClick={() => navigate('/resturant-login')}>Restaurant Login</button>
                 </form>
                 <div className="alt-option">
                     Don't have an account? <button onClick={() => navigate('/register')}>Sign Up</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

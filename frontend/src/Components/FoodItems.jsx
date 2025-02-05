@@ -7,11 +7,12 @@ const FoodItems = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get("http://localhost:8000/fooditems");
+                const response = await axios.get(`${BACKEND_URL}/fooditems`);
                 console.log("Fetched Products:", response.data);
 
                 if (Array.isArray(response.data)) {
