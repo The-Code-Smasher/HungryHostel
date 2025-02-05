@@ -39,6 +39,7 @@ const Login = () => {
     return (
         <div className="login-main">
         <div className="auth-container">
+        <h3 className='resturant-lgn-title'>Restaurant Login</h3>
             <div className="login-container" id="login">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="identifier">Username</label>
