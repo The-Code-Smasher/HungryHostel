@@ -12,6 +12,7 @@ import bcrypt from "bcryptjs";
 import { fileURLToPath } from "url";
 import { connectDB } from "./config/db.js";
 import UserModel from "./models/user.js";
+import RestaurantModel from "./models/restaurant.js";
 import ProductModel from "./models/Product.js";
 
 dotenv.config();
@@ -165,12 +166,13 @@ const authMiddleware = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        req.resturant = decoded;
         next();
     } catch {
         res.status(401).json({ message: "Invalid token" });
     }
 };
+
 
 // 🔹 Login Route
 app.post("/login", async (req, res) => {
@@ -193,6 +195,30 @@ app.post("/login", async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 });
+
+// restaurant Login
+app.post("/resturant-login", async (req, res) => {
+    try {
+        const { identifier, password } = req.body;
+
+        const resturant = await RestaurantModel.findOne({
+            $or: [{ email: identifier }, { name: identifier }, { mobile: identifier }],
+        });
+
+        if (!resturant) return res.status(404).json({ message: "No record found" });
+
+        const isMatch = await bcrypt.compare(password, resturant.password);
+        if (!isMatch) return res.status(400).json({ message: "Incorrect password" });
+
+        const token = jwt.sign({ id: resturant._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+
+        res.json({ message: "Success", resturant, token });
+    } catch (error) {
+        console.error("Restaurant Login Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
 
 // 🔹 Register Route
 app.post("/register", async (req, res) => {

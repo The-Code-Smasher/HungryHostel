@@ -22,7 +22,7 @@ const Login = () => {
                 localStorage.setItem("authToken", response.data.token);
                 localStorage.setItem("loginTime", new Date().getTime().toString());
                 localStorage.setItem("user", JSON.stringify(response.data.user));
-                navigate('/');
+                navigate('/resturant');
             } else {
                 alert(response.data.message);
             }
