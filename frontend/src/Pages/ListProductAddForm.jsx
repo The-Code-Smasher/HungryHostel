@@ -5,8 +5,8 @@ import { MdCurrencyRupee, MdFastfood, MdPhoto, MdRestaurant } from "react-icons/
 import { TbCategory, TbListDetails } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
-const ListProductAddForm = ({ setIsOpen, restaurantId }) => {
-    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const ListProductAddForm = ({ setIsOpen }) => {
+    // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
     const [product, setProduct] = useState({
         name: "",
@@ -28,16 +28,11 @@ const ListProductAddForm = ({ setIsOpen, restaurantId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!restaurantId) {
-            alert("Error: Restaurant ID is missing!");
-            return;
-        }
-
         const formData = new FormData();
         Object.keys(product).forEach((key) => formData.append(key, product[key]));
 
         try {
-            await axios.post(`${BACKEND_URL}/restaurant/${restaurantId}/listproductaddform`, formData, {
+            await axios.post('http://localhost:8000/restaurant/listproductaddform', formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             alert("Product added successfully");

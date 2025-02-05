@@ -9,7 +9,7 @@ const FoodCard = ({ product }) => {
     return (
         <div className="food-card">
             <div className="card-img">
-                <img src={product.images} alt={product.name} className="food-image" />
+                <img src={product.image} alt={product.name} className="food-image" />
             </div>
             <div className="food-info">
                 <div className="title-price">
@@ -18,6 +18,7 @@ const FoodCard = ({ product }) => {
                 </div>
                 <span className="dis-cant">{product.description}</span>
                 <span className="dis-cant">{product.canteen}</span>
+                <span className="dis-cant">MNNIT ALLAHABAD</span>
                 <div className="rating-cart">
                     <span className="rating">⭐⭐⭐⭐☆</span>
                     {quantity === 0 ? (

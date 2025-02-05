@@ -7,17 +7,21 @@ const FoodItems = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
+    // const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5173";
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(`${BACKEND_URL}/fooditems`);
-                console.log("Fetched Products:", response.data);
+                const response = await axios.get('http://localhost:8000')
+                console.log("Full API Response:", response);
 
-                if (Array.isArray(response.data)) {
-                    setProducts(response.data);
+                // Ensure the response contains an array
+                const productsArray = response.data.data || response.data;
+
+                if (Array.isArray(productsArray)) {
+                    setProducts(productsArray);
                 } else {
+                    console.error("Unexpected response format:", response.data);
                     throw new Error("Invalid data format: Expected an array.");
                 }
             } catch (err) {
@@ -33,6 +37,7 @@ const FoodItems = () => {
 
     if (loading) return <p>Loading food items...</p>;
     if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+    if (!loading && products.length === 0) return <p>No food items available.</p>;
 
     return (
         <div className="food-grid">
