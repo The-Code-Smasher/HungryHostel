@@ -52,6 +52,3 @@ const CustomerDashBoard = () => {
 };
 
 export default CustomerDashBoard;
-
-
-
