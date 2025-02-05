@@ -9,7 +9,7 @@ const RestaurantDashboard = () => {
         <>
             <div>
                 <div className="navbar-rest">
-                    <img class = "logor" src={logo} alt="Restaurant Logo" />
+                    <img className = "logor" src={logo} alt="Restaurant Logo" />
                     <div className="nav-buttons">
                         <button
                             className="open-popup-btn post"
@@ -22,12 +22,12 @@ const RestaurantDashboard = () => {
                 </div>
 
                 <div className="rest-container">
-                    <h1>Welcome, Restaurant Owner!</h1>
+                    <h1 className="rTitle">Welcome, Restaurant Owner!</h1>
                     <div className="restaurant-container">
                         <img src={image} alt="Restaurant Image" className="restaurant-img" />
                         <div className="restaurant-text">
-                            <h2>Restaurant Name</h2>
-                            <p>Best place to enjoy delicious meals!</p>
+                            <h2 className="rname">Restaurant Name</h2>
+                            <p className="rslogan">Best place to enjoy delicious meals!</p>
                         </div>
                     </div>
 
@@ -38,6 +38,7 @@ const RestaurantDashboard = () => {
                         <button className="f_buttons">Dinner</button>
                     </div>
 
+                    <div className="cards-rest">
                     <div className="food-card-rest">
                         <img src={logo} alt="Posted Food" />
                         <h3>Delicious Meal</h3>
@@ -49,6 +50,19 @@ const RestaurantDashboard = () => {
                         <h3>Delicious Meal</h3>
                         <p>Description of the food item goes here.</p>
                         <p><strong>Price: ₹10</strong></p>
+                    </div>
+                    <div className="food-card-rest">
+                        <img src={logo} alt="Posted Food" />
+                        <h3>Delicious Meal</h3>
+                        <p>Description of the food item goes here.</p>
+                        <p><strong>Price: ₹10</strong></p>
+                    </div>
+                    <div className="food-card-rest">
+                        <img src={logo} alt="Posted Food" />
+                        <h3>Delicious Meal</h3>
+                        <p>Description of the food item goes here.</p>
+                        <p><strong>Price: ₹10</strong></p>
+                    </div>
                     </div>
                 </div>
             </div>
