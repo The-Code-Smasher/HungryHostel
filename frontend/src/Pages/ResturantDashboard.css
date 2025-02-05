@@ -54,28 +54,6 @@ body {
     opacity: 0.5;
 }
 
-.restaurant-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
-    background: transparent;
-}
-
-.restaurant-text > p,h2{
-    background: transparent;
-    margin: 0px;
-}
-
-.restaurant-text > p{
-    font-size: 20px;
-}
-
 .filter-buttons {
     margin: 20px 0;
     display: flex;
@@ -92,6 +70,11 @@ body {
 }
 .filter-buttons button:hover {
     background-color: #cc5500;
+}
+.cards-rest{
+    display: flex;
+    flex-wrap: wrap;
+
 }
 .food-card-rest {
     background: rgb(19, 18, 18);
@@ -192,4 +175,99 @@ input[type="file"] {
 
 .res-home{
     margin-top: 10px;
+}
+
+.restaurant-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    max-width: 80%; 
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: bold;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+    background: transparent;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.rname {
+    font-size: 3vw;
+    margin: 5px 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rslogan {
+    font-size: 1.5vw;
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.rTitle {
+    font-size: 3vw; /* Default size */
+    text-align: center;
+    margin: 20px 0;
+    font-weight: bold;
+    color: white;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 1024px) {
+    .rTitle {
+        font-size: 4vw;
+    }
+    .restaurant-text {
+        font-size: 4vw;
+        max-width: 85%;
+    }
+
+    .rname {
+        font-size: 5vw;
+    }
+
+    .rslogan {
+        font-size: 3.5vw;
+    }
+}
+@media (max-width: 768px) {
+    .rTitle {
+        font-size: 5vw;
+    }
+    .restaurant-text {
+        font-size: 4vw;
+        max-width: 85%;
+    }
+
+    .rname {
+        font-size: 5vw;
+    }
+
+    .rslogan {
+        font-size: 3.5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .rTitle {
+        font-size: 6vw;
+    }
+    
+    .restaurant-text {
+        font-size: 5vw;
+        max-width: 90%;
+    }
+
+    .rname {
+        font-size: 5vw;
+    }
+
+    .rslogan {
+        font-size: 4.5vw;
+    }
 }
