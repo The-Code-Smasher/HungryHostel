@@ -22,6 +22,10 @@ body {
     margin: 10px;
     height: 40px;
 }
+.logor{
+    height: 50px;
+    width: 100px;
+}
 .navbar-rest img {
     height: 50px;
 }

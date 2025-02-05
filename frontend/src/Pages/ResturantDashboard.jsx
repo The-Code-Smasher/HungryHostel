@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Use navigate for routing
-import chole from "../assets/chole.png";
+import logo from "../assets/logo.png";
 import image from "../assets/image.jpeg";
 
 const RestaurantDashboard = () => {
@@ -8,8 +8,8 @@ const RestaurantDashboard = () => {
     return (
         <>
             <div>
-                <div className="navbar">
-                    <img src={chole} alt="Restaurant Logo" />
+                <div className="navbar-rest">
+                    <img class = "logor" src={logo} alt="Restaurant Logo" />
                     <div className="nav-buttons">
                         <button
                             className="open-popup-btn post"
@@ -39,7 +39,13 @@ const RestaurantDashboard = () => {
                     </div>
 
                     <div className="food-card-rest">
-                        <img src={chole} alt="Posted Food" />
+                        <img src={logo} alt="Posted Food" />
+                        <h3>Delicious Meal</h3>
+                        <p>Description of the food item goes here.</p>
+                        <p><strong>Price: ₹10</strong></p>
+                    </div>
+                    <div className="food-card-rest">
+                        <img src={logo} alt="Posted Food" />
                         <h3>Delicious Meal</h3>
                         <p>Description of the food item goes here.</p>
                         <p><strong>Price: ₹10</strong></p>
