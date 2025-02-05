@@ -35,6 +35,7 @@ body {
 
 /* Cart and Profile Icons */
 .nav-icons {
+    /* justify-content: flex-end; */
     display: flex;
     align-items: center;
     gap: 20px;
@@ -100,5 +101,7 @@ body {
     .shopping-bsk,
     .profile {
         font-size: 25px;
+        margin-right: 10px;
+        margin-bottom: 10px;
     }
 }

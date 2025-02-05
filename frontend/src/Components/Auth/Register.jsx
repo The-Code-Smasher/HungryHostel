@@ -38,6 +38,7 @@ const Register = () => {
     };
 
     return (
+        <div className="login-main">
         <div className="auth-container">
             <div className="tabs">
                 <div className="tab active">Sign Up</div>
@@ -99,6 +100,7 @@ const Register = () => {
                     <button className='btn' onClick={() => navigate('/login')}>Login</button>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
