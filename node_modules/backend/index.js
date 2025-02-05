@@ -40,7 +40,7 @@ connectDB();
 const salt_key = process.env.SALT_KEY || "96434309-7796-489d-8924-ab56988a6076";
 const merchant_id = process.env.MERCHANT_ID || "PGTESTPAYUAT86";
 
-app.get("/", (req, res) => res.send("API is running"));
+// app.get("/", (req, res) => res.send("API is running"));
 
 // Multer Configuration for File Upload
 const storage = multer.diskStorage({
@@ -158,6 +158,16 @@ app.get("/products", async (req, res) => {
         res.status(500).json({ error: "Failed to fetch products" });
     }
 });
+
+app.get("/", async (req, res) => {
+    try {
+        const foodItems = await ProductModel.find();
+        res.json(foodItems);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching food items" });
+    }
+});
+
 
 // Authorization Middleware
 const authMiddleware = (req, res, next) => {
