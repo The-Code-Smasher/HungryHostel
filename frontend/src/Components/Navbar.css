@@ -10,7 +10,7 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 10px 20px;
+    padding: 20px;
     background-color: transparent;
     position: sticky;
     top: 0;
@@ -57,10 +57,15 @@ body {
     font-size: 12px;
 }
 
+.shopping-bsk{
+    padding-right: 10px;
+}
+
 .shopping-bsk,
 .profile {
     background-color: transparent;
     color: white;
+    padding-right: 10px;
     border: none;
     font-size: 30px;
     cursor: pointer;

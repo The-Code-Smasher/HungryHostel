@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import FoodCard from "./FoodCard";
-import item3 from "../assets/item3.png"; // Example food image
 import "./FoodItems.css";
 
-const foodItems = [
-    { id: "pizza1", title: "Pizza", price: 100, image: item3, canteen: "Nath Canteen", location: "MNNIT Allahabad" },
-    { id: "pizza2", title: "Cheese Pizza", price: 120, image: item3, canteen: "Nath Canteen", location: "MNNIT Allahabad" },
-    { id: "pizza3", title: "Veg Pizza", price: 90, image: item3, canteen: "Nath Canteen", location: "MNNIT Allahabad" },
-    { id: "pizza4", title: "Paneer Pizza", price: 150, image: item3, canteen: "Nath Canteen", location: "MNNIT Allahabad" },
-    { id: "pizza5", title: "BBQ Pizza", price: 130, image: item3, canteen: "Nath Canteen", location: "MNNIT Allahabad" },
-];
-
 const FoodItems = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get("http://localhost:8000/fooditems");
+                console.log("Fetched Products:", response.data);
+
+                if (Array.isArray(response.data)) {
+                    setProducts(response.data);
+                } else {
+                    throw new Error("Invalid data format: Expected an array.");
+                }
+            } catch (err) {
+                console.error("Error fetching products:", err);
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    if (loading) return <p>Loading food items...</p>;
+    if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
+
     return (
         <div className="food-grid">
-            {foodItems.map((item) => (
-                <FoodCard key={item.id} {...item} />
+            {products.map((item) => (
+                <FoodCard key={item._id} product={item} />
             ))}
         </div>
     );

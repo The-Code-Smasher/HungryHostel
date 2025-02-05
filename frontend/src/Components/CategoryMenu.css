@@ -11,9 +11,26 @@
 }
 
 .ctg-title {
-    color: #8a8989;
-    font-size: 30px;
+    color: rgb(47, 47, 47);
+    font-size: 15px;
+    padding-top: 50px;
+    padding-bottom: 20px;
     font-weight: 600;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.ctg-title::before,
+.ctg-title::after {
+    content: "";
+    flex-grow: 1;
+    height: 2px;
+    background-color:  rgb(47, 47, 47);
+    margin: 0 10px;
 }
 
 /* Responsive Category Buttons */

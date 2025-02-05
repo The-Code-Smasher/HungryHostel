@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 70vh; /* Always cover full screen */
+    min-height: 60vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -78,38 +78,35 @@ body {
 .slogan {
     color: white;
     font-weight: 500;
-    font-size: 38px;
+    font-size: 25px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
                  1px 1px 4px rgba(255, 255, 255, 0.2);
-    max-width: 90%; 
-    padding: 0 10px;
+    max-width: 100%; 
+    padding-top: 15px; 
+    word-spacing: 5px;
     text-align: center;
 }
-/* Search Bar Below Slogan */
+
 .dashboard-search {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90%; 
+    width: 100%;
     max-width: 600px;
-    margin-top: 20px;
     position: relative;
-    padding-bottom:40px ;
     margin-bottom: 40px;
-    /* transform: translateY(-50%, -60%); */
 }
 
 .dashboard-search input {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded Corners */
+    border-radius: 20px;
     outline: none;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0.9);
-    padding-right: 45px; /* Ensures space for button */
-    /* transform: translateY(-50%, -60%); */
-}
+    padding-right: 45px;
+} 
 
 .dashboard-search input::placeholder {
     color: #777;
@@ -119,12 +116,12 @@ body {
 .dashboard-search button {
     position: absolute;
     right: 10px;
-    top: 50%;
+    top: 27%;
     transform: translateY(-50%, -40%);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 25px;
     color: #333;
 }
 
@@ -132,7 +129,6 @@ body {
     color: #000;
 }
 
-/* 🔹 Prevent Image Moving Down */
 @media (max-width: 1024px) {
     .home-container {
         min-height: 80vh;  
@@ -154,7 +150,7 @@ body {
         overflow: hidden;
     }
 }
-/* 🔹 RESPONSIVE FONT & WIDTH ADJUSTMENTS */
+
 @media (max-width: 1024px) {
     .hungryhst {
         font-size: 70px;
@@ -193,11 +189,6 @@ body {
 
 }
 
-
-
-
-/* 🔹 RESPONSIVE DESIGN FOR SEARCHBAR */
-
 @media (max-width: 1024px){
 
     .dashboard-search {
@@ -229,4 +220,3 @@ body {
         font-size: 18px;
     }
 }
-

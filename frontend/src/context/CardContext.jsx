@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
@@ -7,40 +7,53 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState({});
+    const [cart, setCart] = useState(() => {
+        
+        const savedCart = localStorage.getItem("cart");
+        return savedCart ? JSON.parse(savedCart) : {};
+    });
+
+    
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
     
     const getTotalCount = () => {
         return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
     };
 
-    const addToCart = (id, price) => {
-        setCart((prevCart) => ({
-            ...prevCart,
-            [id]: {
-                quantity: (prevCart[id]?.quantity || 0) + 1,
-                price,
-            },
-        }));
-    };
+    const addToCart = (productId, price) => {
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+            
+            if (updatedCart[productId]) {
+                updatedCart[productId].quantity += 1;
+            } else {
+                updatedCart[productId] = { quantity: 1, price }; // Add new product
+            }
+            
+            return updatedCart;
+        });
+    };    
 
-    const updateQuantity = (id, quantity) => {
-        if (quantity <= 0) {
-            removeFromCart(id);
-        } else {
-            setCart((prevCart) => ({
-                ...prevCart,
-                [id]: {
-                    ...prevCart[id],
-                    quantity,
-                },
-            }));
-        }
-    };
+    const updateQuantity = (productId, newQuantity) => {
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+    
+            if (updatedCart[productId]) {
+                updatedCart[productId].quantity = newQuantity;
+            }
+            
+            return updatedCart;
+        });
+    };    
 
     const removeFromCart = (id) => {
-        const updatedCart = { ...cart };
-        delete updatedCart[id];
-        setCart(updatedCart);
+        setCart((prevCart) => {
+            const updatedCart = { ...prevCart };
+            delete updatedCart[id];
+            return updatedCart;
+        });
     };
 
     const calculateTotal = () => {

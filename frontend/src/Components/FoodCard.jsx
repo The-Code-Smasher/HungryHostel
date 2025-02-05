@@ -2,33 +2,36 @@ import React from "react";
 import { useCart } from "../context/CardContext.jsx";
 import "./FoodItems.css";
 
-const FoodCard = ({ id, title, price, image, canteen, location }) => {
+const FoodCard = ({ product }) => {
     const { cart, addToCart, updateQuantity } = useCart();
-    const quantity = cart[id]?.quantity || 0; // Accessing quantity properly
+    const quantity = cart[product._id]?.quantity || 0;
 
     return (
         <div className="food-card">
-            <img src={image} alt={title} className="food-image" />
+            <div className="card-img">
+                <img src={product.images} alt={product.name} className="food-image" />
+            </div>
             <div className="food-info">
                 <div className="title-price">
-                    <h2 className="food-title">{title}</h2>
-                    <span className="food-price">₹{price}</span>
+                    <h2 className="food-title">{product.name}</h2>
+                    <span className="food-price">₹{product.price}</span>
                 </div>
-                <span className="dis-cant">Lorem ipsum dolor sit amet.</span>
-                <span className="dis-cant">{canteen}</span>
-                <span className="dis-cant">{location}</span>
+                <span className="dis-cant">{product.description}</span>
+                <span className="dis-cant">{product.canteen}</span>
                 <div className="rating-cart">
                     <span className="rating">⭐⭐⭐⭐☆</span>
-
                     {quantity === 0 ? (
-                        <button className="add-to-cart" onClick={() => addToCart(id, price)}>
+                        <button 
+                          className="add-to-cart" 
+                          onClick={() => addToCart(product._id, product.price)}
+                        >
                             Add to Cart
                         </button>
                     ) : (
                         <div className="quantity-controls">
-                            <button onClick={() => updateQuantity(id, quantity - 1)}>-</button>
-                            <span>{quantity}</span>
-                            <button onClick={() => updateQuantity(id, quantity + 1)}>+</button>
+                            <button onClick={() => updateQuantity(product._id, quantity - 1)}>-</button>
+                            <span className="quantity">{quantity}</span>
+                            <button onClick={() => updateQuantity(product._id, quantity + 1)}>+</button>
                         </div>
                     )}
                 </div>

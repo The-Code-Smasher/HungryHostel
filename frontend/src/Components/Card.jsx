@@ -30,20 +30,20 @@ const Cart = ({ onClose }) => {
                 {Object.keys(cart).length === 0 ? (
                     <p>Your cart is empty.</p>
                 ) : (
-                    Object.entries(cart).map(([title, { quantity, price }]) => (
-                        <div key={title} className="cart-item">
-                            <span className="item-name">{title}</span>
+                    Object.entries(cart).map(([name, { quantity, price }]) => (
+                        <div key={name} className="cart-item">
+                            <span className="item-name">{name}</span>
                             <span className="item-price">₹{(quantity * price).toFixed(2)}</span>
                             <span className="item-quantity">x{quantity}</span>
-                            <FaTrashAlt className="remove-item" onClick={() => removeFromCart(title)} />
+                            <FaTrashAlt className="remove-item" onClick={() => removeFromCart(name)} />
                         </div>
                     ))
                 )}
             </div>
 
             <div className="cart-footer">
-                <h3>Items: {Object.keys(cart).length}</h3>
-                <h3>Total Amount: ₹{calculateTotal()}</h3>
+                <h3 className="cart-entity">Items: {Object.keys(cart).length}</h3>
+                <h3 className="cart-entity">Total Amount: ₹{calculateTotal()}</h3>
                 <hr className="divider" />
                 <button className="checkout-btn" onClick={handleCheckout}>
                     Checkout

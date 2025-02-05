@@ -14,21 +14,22 @@ body {
 .post, .logout, .f_buttons{
     width: 90px;
 }
-.navbar {
+.navbar-rest {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: transparent;
+    margin: 10px;
     height: 40px;
 }
-.navbar img {
+.navbar-rest img {
     height: 50px;
 }
-.nav-buttons {
+.nav-rest-buttons {
     display: flex;
     gap: 10px;
 }
-.nav-buttons button {
+.nav-rest-buttons button {
     background-color: #ff6600;
     color: white;
     border: none;
@@ -36,7 +37,7 @@ body {
     cursor: pointer;
     border-radius: 5px;
 }
-.nav-buttons button:hover {
+.nav-rest-buttons button:hover {
     background-color: #cc5500;
 }
 .rest-container {
@@ -98,13 +99,93 @@ body {
     border-radius: 10px;
     border: 0.5px solid white;
     color: white;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 5px white;
     text-align: left;
+    overflow-x: hidden;
 }
 .food-card-rest img {
     width: 100%;
     border-radius: 10px;
 }
-.food-card h3 {
+.food-card-rest h3 {
     margin: 10px 0;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.input-group .icon {
+    margin-right: 10px;
+    color: #888;
+    font-size: 20px;
+}
+
+.input-group input,
+.input-group select {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+input[type="file"] {
+    color: black;
+    border: none;
+    padding: 5px;
+}
+
+.post-food {
+    background: #ff6600;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-food:hover {
+    background: #ff6600;
+}
+
+#category {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    background: none;
+    color: grey;
+    cursor: pointer;
+}
+
+.res-home{
+    margin-top: 10px;
 }
