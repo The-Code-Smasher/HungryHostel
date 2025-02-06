@@ -1,61 +1,86 @@
-Hungry Hostel (Project Root)
+.
+├── README.md                                          
+├── backend
+│   ├── config
+│   │   └── db.js
+│   ├── index.js
+│   ├── models
+│   │   ├── order.js
+│   │   ├── product.js
+│   │   ├── restaurant.js
+│   │   └── user.js
+│   ├── package-lock.json
+│   ├── package.json
+│   └── routes
+│       └── userRoutes.js
+├── frontend
+│   ├── Favicon.png
+│   ├── README.md
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   ├── src
+│   │   ├── App.css
+│   │   ├── App.jsx
+│   │   ├── Components
+│   │   │   ├── Auth
+│   │   │   │   ├── Login.css
+│   │   │   │   ├── Login.jsx
+│   │   │   │   ├── Register.jsx
+│   │   │   │   └── ResturantLogin.jsx
+│   │   │   ├── Card.css
+│   │   │   ├── Card.jsx
+│   │   │   ├── CategoryMenu.css
+│   │   │   ├── CategoryMenu.jsx
+│   │   │   ├── FeatureFoodSilder.jsx
+│   │   │   ├── FeatureFoodSlider.css
+│   │   │   ├── FoodCard.jsx
+│   │   │   ├── FoodItems.css
+│   │   │   ├── FoodItems.jsx
+│   │   │   ├── Navbar.css
+│   │   │   ├── Navbar.jsx
+│   │   │   ├── Profile.css
+│   │   │   ├── Profile.jsx
+│   │   │   ├── ToggleSearch.css
+│   │   │   ├── ToggleSearch.jsx
+│   │   │   ├── demo.jsx
+│   │   │   └── payment
+│   │   │       ├── payment.css
+│   │   │       └── payment.jsx
+│   │   ├── Pages
+│   │   │   ├── CustomerDashboard.css
+│   │   │   ├── CustomerDashboard.jsx
+│   │   │   ├── ListProductAddForm.jsx
+│   │   │   ├── ResturantDashboard.css
+│   │   │   └── ResturantDashboard.jsx
+│   │   ├── ProtectedRoute.jsx
+│   │   ├── ResturantProtectedRoute.jsx
+│   │   ├── assets
+│   │   │   ├── chole.png
+│   │   │   ├── image.jpeg
+│   │   │   ├── item1.png
+│   │   │   ├── item2.png
+│   │   │   ├── item3.png
+│   │   │   ├── item4.png
+│   │   │   ├── item5.png
+│   │   │   ├── item6.png
+│   │   │   ├── item7.png
+│   │   │   ├── item8.png
+│   │   │   ├── login.jpg
+│   │   │   ├── logo.png
+│   │   │   ├── purchase.png
+│   │   │   ├── slider1.jpg
+│   │   │   ├── slider2.jpg
+│   │   │   └── slider3.jpg
+│   │   ├── context
+│   │   │   └── CardContext.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   └── vite.config.js
+├── package-lock.json
+├── package.json
+└── structure.txt
 
-├── backend                               # Server-side (Node.js, Express, MongoDB)
-│   ├── config                            # Configuration files
-│   │   └── db.js                         # Database connection setup
-│   ├── index.js                          # Main server entry point
-│   ├── models                            # Mongoose schemas
-│   │   ├── order.js                      # Order schema
-│   │   ├── product.js                    # Product schema
-│   │   ├── restaurant.js                 # Restaurant schema
-│   │   └── user.js                       # User schema
-│   ├── routes                            # API routes
-│   │   └── userRoutes.js                 # Routes for user authentication
-│   ├── uploads                           # Stores uploaded images
-│   │   ├── *images*                      # Various uploaded food and user images
-│   ├── package.json                      # Backend dependencies
-│   ├── package-lock.json                 # Backend dependency lock file
-├── frontend                              # Client-side (React, Vite)
-│   ├── Favicon.png                       # Site favicon
-│   ├── README.md                         # Frontend documentation
-│   ├── eslint.config.js                  # ESLint configuration
-│   ├── index.html                        # Root HTML file
-│   ├── package.json                      # Frontend dependencies
-│   ├── package-lock.json                 # Frontend dependency lock file
-│   ├── public/                           # Static assets
-│   ├── src/                              # React source files
-│   │   ├── App.jsx                       # Main app component
-│   │   ├── App.css                       # Global styles
-│   │   ├── index.css                     # Main CSS file
-│   │   ├── main.jsx                      # Entry point for React
-│   │   ├── Components/                   # Reusable UI components
-│   │   │   ├── Auth/                     # Authentication-related components
-│   │   │   │   ├── Login.jsx             # User login form
-│   │   │   │   ├── Login.css             # Styles for login form
-│   │   │   │   ├── ResturantLogin.jsx    # ResturantLogin form
-│   │   │   │   └── Register.jsx          # User registration form
-│   │   │   ├── Navbar.jsx                # Navbar
-│   │   │   ├── Navbar.css                # Navbar styles
-│   │   │   ├── Card.jsx                  # Food item Cart
-│   │   │   ├── Card.css                  # Styles for Cart
-│   │   │   ├── CategoryMenu.jsx          # Category menu for filtering items
-│   │   │   ├── FeatureFoodSilde.jsx      # Featured food slider
-│   │   │   ├── Profile.jsx               # User profile page
-│   │   │   ├── ToggleSearch.jsx          # Search toggle bar
-│   │   │   ├── payment/                  # Payment-related components
-│   │   │   │   ├── payment.jsx           # Payment page
-│   │   │   │   ├── payment.css           # Payment styles
-│   │   ├── Pages/                        # Page-level components
-│   │   │   ├── CustomerDashboard.jsx     # Dashboard for customers
-│   │   │   ├── ResturantDashboard.jsx    # Dashboard for restaurant owners
-│   │   │   ├── ListProductAddForm.jsx    # Form to list new food items
-│   │   ├── assets/                       # Images and icons
-│   │   │   ├── *food images, icons, logo*
-│   │   ├── context/                      # Global state management
-│   │   │   └── CardContext.jsx           # Context for managing cart items
-│   │   ├── ProtectedRoute.jsx            # Route protection for authenticated users
-│   │   ├── ResturantProtectedRoute.jsx   # Route protection for restaurants
-│   ├── vite.config.js                    # Vite configuration
-├── README.md                             # Project documentation
-├── package.json                          # Root-level dependencies and scripts
-├── package-lock.json                     # Dependency lock file
+14 directories, 70 files
