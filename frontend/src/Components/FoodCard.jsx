@@ -9,8 +9,21 @@ const FoodCard = ({ product }) => {
     return (
         <div className="food-card">
             <div className="card-img">
-                <img src={product.image} alt={product.name} className="food-image" />
+                
+                {product.images && product.images.length > 0 ? (
+                    product.images.map((image, index) => (
+                        <img
+                        key={index}
+                        src={`http://localhost:8000/${image.replace(/^.*[\\\/]uploads[\\\/]/, "uploads/")}`}
+                        alt={product.name}
+                        className="food-image"
+                        />
+                    ))
+                ) : (
+                    <p>No images available</p>
+                )}
             </div>
+
             <div className="food-info">
                 <div className="title-price">
                     <h2 className="food-title">{product.name}</h2>
@@ -23,8 +36,8 @@ const FoodCard = ({ product }) => {
                     <span className="rating">⭐⭐⭐⭐☆</span>
                     {quantity === 0 ? (
                         <button 
-                          className="add-to-cart" 
-                          onClick={() => addToCart(product._id, product.price)}
+                            className="add-to-cart" 
+                            onClick={() => addToCart(product._id, product.price)}
                         >
                             Add to Cart
                         </button>
