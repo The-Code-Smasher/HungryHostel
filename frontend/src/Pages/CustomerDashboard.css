@@ -130,18 +130,26 @@ body {
 
 @media (max-width: 768px) {
     .hungryhst {
-        font-size: 40px;
+        font-size: 60px;
     }
     .slogan {
-        font-size: 17px;
+        font-size: 24px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
     .hungryhst {
-        font-size: 30px;
+        font-size: 50px;
     }
     .slogan {
-        font-size: 13px;
+        font-size: 20px;
+    }
+}
+@media (max-width: 470px) {
+    .hungryhst {
+        font-size: 40px;
+    }
+    .slogan {
+        font-size: 15px;
     }
 }

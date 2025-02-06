@@ -5,6 +5,12 @@ import image from "../assets/image.jpeg";
 
 const RestaurantDashboard = () => {
     const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("loginTime");
+        localStorage.removeItem("user");
+        navigate("/resturant-login");
+    };
     return (
         <>
             <div>
@@ -17,7 +23,7 @@ const RestaurantDashboard = () => {
                         >
                             Post
                         </button>
-                        <button className="logout">Logout</button>
+                        <button className="logout" onClick={handleLogout}>Logout</button>
                     </div>
                 </div>
 
