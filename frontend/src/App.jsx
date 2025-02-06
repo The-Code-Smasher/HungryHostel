@@ -8,7 +8,7 @@ import Payment from './Components/payment/payment';
 import Login from './Components/Auth/login';
 import Register from './Components/Auth/Register';
 import ListProductAddForm from "./Pages/ListProductAddForm";
-import RestaurantLogin from "./Components/Login/ResturantLogin";
+import RestaurantLogin from "./Components/Auth/ResturantLogin";
 
 function App() {
     return (
