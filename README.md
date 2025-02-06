@@ -1,4 +1,3 @@
-.
 ├── README.md
 ├── backend
 │   ├── config
