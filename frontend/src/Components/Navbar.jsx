@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCircle } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
 import "./Navbar.css";
 import { useCart } from "../context/CardContext";
 import Logo from "../assets/logo.png";
@@ -35,7 +35,7 @@ const Navbar = () => {
                             {totalItems > 0 && <span className="cart-count">{totalItems}</span>}
                         </span>
                         <span className="profile" onClick={handleProfileClick}>
-                            <FaCircle />
+                            <CgProfile />
                         </span>
                     </div>
                 </div>
