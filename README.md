@@ -1,4 +1,4 @@
-.
+Folder Structure
 ├── README.md                                          
 ├── backend
 │   ├── config
