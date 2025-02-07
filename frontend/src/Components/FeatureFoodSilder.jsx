@@ -16,30 +16,30 @@ const FeatureFoodSlider = () => {
         slidesToShow: 7,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 91000,
         responsive: [
             {
-                breakpoint: 1200, // Large screens
+                breakpoint: 1025,
+                settings: {
+                    slidesToShow: 6,
+                },
+            },
+            {
+                breakpoint: 770,
                 settings: {
                     slidesToShow: 4,
                 },
             },
             {
-                breakpoint: 992, // Medium screens (tablets)
+                breakpoint: 550,
                 settings: {
                     slidesToShow: 3,
                 },
             },
             {
-                breakpoint: 768, // Small screens (mobile landscape)
+                breakpoint: 440,
                 settings: {
                     slidesToShow: 2,
-                },
-            },
-            {
-                breakpoint: 480, // Extra small screens (mobile portrait)
-                settings: {
-                    slidesToShow: 1,
                 },
             },
         ],
@@ -62,8 +62,10 @@ const FeatureFoodSlider = () => {
             <Slider {...settings}>
                 {foodItems.map((item) => (
                 <div className="SlideOut" key={item.id} >
-                   <div className="slide"> <img src={item.image} alt={item.name} className="food-image" />
-                   <h3 className="food-name">{item.name}</h3></div>
+                   <div className="slide"> 
+                        <img src={item.image} alt={item.name} className="slider-image" />
+                        <h3 className="food-name">{item.name}</h3>
+                    </div>
                 </div>
                 ))}
             </Slider>

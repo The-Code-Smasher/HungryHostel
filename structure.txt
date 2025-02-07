@@ -1,4 +1,4 @@
-Hungry Hostel (Project Root)
+Hungry Hostel (Project Structure)
 
 ├── backend                               # Server-side (Node.js, Express, MongoDB)
 │   ├── config                            # Configuration files

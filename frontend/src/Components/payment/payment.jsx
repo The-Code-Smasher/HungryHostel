@@ -9,7 +9,6 @@ const Payment = () => {
     const [upiid, setUPIid] = useState('');
     const [mobile, setMobile] = useState('');
     const [loading, setLoading] = useState(false);
-    const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +24,7 @@ const Payment = () => {
                 transactionID: "T" + Date.now(),
             };
 
-            const response = await axios.post(`${BACKEND_URL}/order`, data);
+            const response = await axios.post(`http://localhost:8000/order`, data);
             console.log("Response from server: ", response); 
 
             if (response.data && response.data.data.instrumentResponse.redirectInfo.url) {

@@ -15,7 +15,6 @@ const FoodItems = () => {
                 const response = await axios.get('http://localhost:8000')
                 console.log("Full API Response:", response);
 
-                // Ensure the response contains an array
                 const productsArray = response.data.data || response.data;
 
                 if (Array.isArray(productsArray)) {

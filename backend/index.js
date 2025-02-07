@@ -38,8 +38,10 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 connectDB();
 
 // Payment Constants
-const salt_key = process.env.SALT_KEY || "96434309-7796-489d-8924-ab56988a6076";
-const merchant_id = process.env.MERCHANT_ID || "PGTESTPAYUAT86";
+const salt_key = process.env.SALT_KEY;
+const merchant_id = process.env.MERCHANT_ID;
+const frontend_url = process.env.FRONTEND_URL;
+const backend_url = process.env.BACKEND_URL;
 
 // app.get("/", (req, res) => res.send("API is running"));
 
@@ -69,7 +71,7 @@ app.post("/order", async (req, res) => {
             upiid,
             amount: amount * 100,
             mobileNumber: mobile,
-            redirectUrl: `http://localhost:8000/status?id=${transactionID}`,
+            redirectUrl: `${backend_url}/status?id=${transactionID}`,
             redirectMode: "POST",
             paymentInstrument: { type: "PAY_PAGE" },
         };
@@ -118,7 +120,7 @@ app.post("/status", async (req, res) => {
             }
         );
 
-        res.redirect(response.data.success ? "http://localhost:5173/" : "http://localhost:5173/failure");
+        res.redirect(response.data.success ? `${frontend_url}/` : `${frontend_url}/failure`);
     } catch (error) {
         res.status(500).json({ error: "Internal server error" });
     }

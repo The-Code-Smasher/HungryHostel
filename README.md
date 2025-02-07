@@ -1,5 +1,4 @@
-Folder Structure
-├── README.md                                          
+├── README.md
 ├── backend
 │   ├── config
 │   │   └── db.js
