@@ -5,15 +5,13 @@ import { useCart } from "../context/CardContext";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 
-const Cart = ({ onClose, product }) => {
+const Cart = ({ onClose }) => {
     const { cart, calculateTotal, removeFromCart } = useCart();
     const navigate = useNavigate();
-    const calculateTotalAmount = () => {
-        return calculateTotal();
-    };
+
     const handleCheckout = () => {
-        if (calculateTotalAmount() > 0) {
-            navigate("/payment", { state: { totalAmount: calculateTotalAmount() } });
+        if (calculateTotal() > 0) {
+            navigate("/payment", { state: { totalAmount: calculateTotal() } });
         } else {
             alert("Please add items to your cart before proceeding to checkout.");
         }
@@ -23,19 +21,19 @@ const Cart = ({ onClose, product }) => {
         <div className="cart-container">
             <div className="cart-header">
                 <span className="cart-title">My Order</span>
-                <IoMdClose className="close-icon" onClick={onClose} /> 
+                <IoMdClose className="close-icon" onClick={onClose} /> {/* Close button */}
             </div>
 
             <div className="cart-items">
                 {Object.keys(cart).length === 0 ? (
                     <p>Your cart is empty.</p>
                 ) : (
-                    Object.entries(cart).map(([name, { quantity, price }]) => (
-                        <div key={name} className="cart-item">
-                            <span className="item-name">{name}</span>
-                            <span className="item-price">₹{(quantity * price).toFixed(2)}</span>
-                            <span className="item-quantity">x{quantity}</span>
-                            <FaTrashAlt className="remove-item" onClick={() => removeFromCart(name)} />
+                    Object.entries(cart).map(([id, product]) => (
+                        <div key={id} className="cart-item">
+                            <span className="item-name">{product.name}</span>
+                            <span className="item-price">₹{(product.quantity * product.price).toFixed(2)}</span>
+                            <span className="item-quantity">x{product.quantity}</span>
+                            <FaTrashAlt className="remove-item" onClick={() => removeFromCart(id)} />
                         </div>
                     ))
                 )}
