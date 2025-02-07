@@ -5,7 +5,7 @@ import { useCart } from "../context/CardContext";
 import { useNavigate } from "react-router-dom";
 import "./Card.css";
 
-const Cart = ({ onClose }) => {
+const Cart = ({ onClose, product }) => {
     const { cart, calculateTotal, removeFromCart } = useCart();
     const navigate = useNavigate();
     const calculateTotalAmount = () => {
@@ -23,7 +23,7 @@ const Cart = ({ onClose }) => {
         <div className="cart-container">
             <div className="cart-header">
                 <span className="cart-title">My Order</span>
-                <IoMdClose className="close-icon" onClick={onClose} /> {/* Close button */}
+                <IoMdClose className="close-icon" onClick={onClose} /> 
             </div>
 
             <div className="cart-items">
@@ -45,7 +45,7 @@ const Cart = ({ onClose }) => {
                 <h3 className="cart-entity">Items: {Object.keys(cart).length}</h3>
                 <h3 className="cart-entity">Total Amount: ₹{calculateTotal()}</h3>
                 <hr className="divider" />
-                <button className="checkout-btn" onClick={handleCheckout}>
+                <button className="checkout-btn" formTarget="_blank" onClick={handleCheckout}>
                     Checkout
                 </button>
             </div>

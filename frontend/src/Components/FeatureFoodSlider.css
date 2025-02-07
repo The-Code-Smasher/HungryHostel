@@ -1,8 +1,8 @@
 .slider-container {
-    width: 95%;
+    width: 100%;
     margin: auto;
+    max-width: 100%;
 }
-
 
 .slide {
     width: 200px;
@@ -33,9 +33,9 @@
     margin: 0 10px;
 }
 
-.food-image {
+.slider-image {
     justify-content: center;
-    width: 200px;
+    width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 10px;
@@ -52,6 +52,35 @@
     font-weight: 600;
     margin-top: 10px;
 }
+
+.slide{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.SlideOut{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .slider-image{
+        width: 150px;
+        height: 150px;
+    }
+
+    .SlideOut{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @media (max-width: 768px) {
     .slide{
         width: 200px !important;
