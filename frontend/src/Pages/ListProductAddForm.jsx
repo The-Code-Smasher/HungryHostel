@@ -18,10 +18,38 @@ const ListProductAddForm = () => {
     const [preview, setPreview] = useState(null);
 
     useEffect(() => {
-        const stored = JSON.parse(localStorage.getItem('resturant') || '{}');
-        if (stored?.name) {
-            setProduct(p => ({ ...p, canteen: stored.name }));
-        }
+        const fetchCanteenInfo = async () => {
+            let storedName = "";
+            try {
+                const raw = localStorage.getItem('resturant');
+                if (raw && raw !== 'undefined') {
+                    const parsed = JSON.parse(raw);
+                    storedName = parsed?.name;
+                }
+            } catch (e) {
+                console.error("Error parsing stored resturant:", e);
+            }
+
+            if (storedName) {
+                setProduct(p => ({ ...p, canteen: storedName }));
+            } else {
+                try {
+                    const token = localStorage.getItem('authToken');
+                    if (token) {
+                        const res = await axios.get(`${BACKEND}/restaurant/dashboard`, {
+                            headers: { 'Authorization': `Bearer ${token}` }
+                        });
+                        if (res.data?.restaurant?.name) {
+                            setProduct(p => ({ ...p, canteen: res.data.restaurant.name }));
+                            localStorage.setItem('resturant', JSON.stringify(res.data.restaurant));
+                        }
+                    }
+                } catch (err) {
+                    console.error("Error fetching restaurant info as fallback:", err);
+                }
+            }
+        };
+        fetchCanteenInfo();
     }, []);
 
     const handleChange = e => setProduct({ ...product, [e.target.name]: e.target.value });

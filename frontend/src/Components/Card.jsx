@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 import { useCart } from "../context/CardContext";
@@ -6,19 +7,9 @@ import axios from "axios";
 import "./Card.css";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:8000";
-const RAZORPAY_KEY = import.meta.env.VITE_RAZORPAY_KEY_ID;
-
-const loadRazorpay = () =>
-    new Promise((resolve) => {
-        if (window.Razorpay) return resolve(true);
-        const script = document.createElement("script");
-        script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.onload = () => resolve(true);
-        script.onerror = () => resolve(false);
-        document.body.appendChild(script);
-    });
 
 const Cart = ({ onClose }) => {
+    const navigate = useNavigate();
     const { cart, calculateTotal, removeFromCart, updateQuantity, clearCart } = useCart();
     const [paying, setPaying] = useState(false);
     const entries = Object.entries(cart);
@@ -32,72 +23,42 @@ const Cart = ({ onClose }) => {
 
         setPaying(true);
 
-        try {
-            // Load Razorpay script
-            const loaded = await loadRazorpay();
-            if (!loaded) {
-                alert("Razorpay failed to load. Check your internet connection.");
+        const cartItems = entries.map(([id, item]) => ({
+            productId: id,
+            quantity:  item.quantity,
+            price:     item.price,
+            name:      item.name
+        }));
+
+        const token = localStorage.getItem("authToken");
+
+        if (total <= 1) {
+            // Direct placement flow (orders <= ₹1)
+            try {
+                const response = await axios.post(
+                    `${BACKEND_URL}/orders/direct`,
+                    { cartItems, totalAmount: total, shippingAddress: "Campus Hostel" },
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+
+                if (response.data.success) {
+                    clearCart();
+                    onClose();
+                    alert("✅ Order placed successfully! (Direct Checkout)");
+                } else {
+                    alert("Failed to place direct order.");
+                }
+            } catch (err) {
+                console.error("Direct order error:", err);
+                alert("Error placing direct order. Please try again.");
+            } finally {
                 setPaying(false);
-                return;
             }
-
-            // Create order on backend
-            const { data } = await axios.post(`${BACKEND_URL}/api/payment/create-order`, {
-                amount: total,
-            });
-
-            if (!data.success) {
-                alert("Could not create payment order.");
-                setPaying(false);
-                return;
-            }
-
-            const user = JSON.parse(localStorage.getItem("user") || "{}");
-
-            // Open Razorpay modal — stays on same page, no redirect
-            const options = {
-                key: RAZORPAY_KEY || data.key_id,
-                amount: data.amount,
-                currency: data.currency,
-                name: "Hungry Hostel",
-                description: "Food Order Payment",
-                order_id: data.order_id,
-                handler: async (response) => {
-                    try {
-                        const verify = await axios.post(`${BACKEND_URL}/api/payment/verify`, {
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature,
-                        });
-
-                        if (verify.data.success) {
-                            clearCart();
-                            onClose();
-                            alert("✅ Payment successful! Your order has been placed.");
-                        } else {
-                            alert("Payment verification failed. Contact support.");
-                        }
-                    } catch {
-                        alert("Error verifying payment. Contact support.");
-                    }
-                },
-                prefill: {
-                    name: user?.username || "",
-                    email: user?.email || "",
-                    contact: user?.mobile || "",
-                },
-                theme: { color: "#e63946" },
-                modal: {
-                    ondismiss: () => setPaying(false),
-                },
-            };
-
-            const rzp = new window.Razorpay(options);
-            rzp.open();
-        } catch (err) {
-            console.error("Payment error:", err);
-            alert("Error initiating payment. Please try again.");
+        } else {
+            // Address redirection flow (orders > ₹1)
             setPaying(false);
+            onClose();
+            navigate("/address", { state: { totalAmount: total, cartItems } });
         }
     };
 

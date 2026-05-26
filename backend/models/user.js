@@ -24,6 +24,14 @@ const userSchema = new mongoose.Schema({
         type: String, 
         required: true,
     },
+    hostel: {
+        type: String,
+        default: "",
+    },
+    roomNo: {
+        type: String,
+        default: "",
+    },
     createdAt: {
         type: Date,
         immutable: true,

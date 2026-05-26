@@ -175,6 +175,31 @@
     letter-spacing: 0.3px;
 }
 
+.pay-address-block {
+    margin-bottom: 20px;
+    background: #1c1c1c;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #252525;
+}
+
+.pay-addr-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.4);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.pay-addr-text {
+    font-size: 0.85rem;
+    color: #f0ede8;
+    margin: 0;
+    line-height: 1.5;
+}
+
 /* Success screen */
 .pay-success {
     background: #161616;

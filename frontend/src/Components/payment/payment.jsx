@@ -34,10 +34,11 @@ const Payment = () => {
         if (stored) setUser(JSON.parse(stored));
     }, []);
 
-    const cartItems = Object.entries(cart).map(([id, item]) => ({
+    const cartItems = location.state?.cartItems || Object.entries(cart).map(([id, item]) => ({
         productId: id,
         quantity:  item.quantity,
         price:     item.price,
+        name:      item.name,
     }));
 
     const handlePayment = async () => {
@@ -87,7 +88,7 @@ const Payment = () => {
                                 razorpay_signature:  response.razorpay_signature,
                                 cartItems,
                                 totalAmount,
-                                shippingAddress: 'Campus Hostel',
+                                shippingAddress: location.state?.shippingAddress || 'Campus Hostel',
                             },
                             { headers: { Authorization: `Bearer ${token}` } }
                         );
@@ -148,16 +149,22 @@ const Payment = () => {
                 {/* Cart Items */}
                 <div className="pay-items">
                     {cartItems.length === 0 ? (
-                        <p className="pay-empty">Your cart is empty.</p>
+                        <p className="pay1-empty">Your cart is empty.</p>
                     ) : (
                         cartItems.map((item) => (
                             <div key={item.productId} className="pay-item">
-                                <span className="pay-item-name">Item #{item.productId.slice(-5)}</span>
+                                <span className="pay-item-name">{cart[item.productId]?.name || item.name || `Item #${item.productId.slice(-5)}`}</span>
                                 <span className="pay-item-qty">× {item.quantity}</span>
                                 <span className="pay-item-price">₹{item.price * item.quantity}</span>
                             </div>
                         ))
                     )}
+                </div>
+
+                {/* Delivery Address */}
+                <div className="pay-address-block">
+                    <span className="pay-addr-label">📍 Delivery Location</span>
+                    <p className="pay-addr-text">{location.state?.shippingAddress || "Campus Hostel"}</p>
                 </div>
 
                 <div className="pay-divider" />

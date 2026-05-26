@@ -30,7 +30,7 @@ export const CartProvider = ({ children }) => {
             if (updatedCart[productId]) {
                 updatedCart[productId].quantity += 1;
             } else {
-                updatedCart[productId] = { quantity: 1, price }; // Add new product
+                updatedCart[productId] = { quantity: 1, price, name }; // Add new product
             }
 
             return updatedCart;

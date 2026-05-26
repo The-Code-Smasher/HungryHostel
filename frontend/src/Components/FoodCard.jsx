@@ -58,7 +58,7 @@ const FoodCard = ({ product }) => {
                             className="add-to-cart"
                             onClick={() => addToCart(product._id, product.price, product.name)}
                         >
-                            + Add
+                            ADD <span className="zomato-plus">+</span>
                         </button>
                     ) : (
                         <div className="quantity-controls">

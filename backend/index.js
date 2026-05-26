@@ -15,6 +15,7 @@ import { connectDB } from "./config/db.js";
 import UserModel from "./models/user.js";
 import RestaurantModel from "./models/restaurant.js";
 import ProductModel from "./models/product.js";
+import OrderModel from "./models/order.js";
 
 dotenv.config();
 
@@ -159,6 +160,48 @@ app.post("/razorpay/verify", authMiddleware, async (req, res) => {
     }
 });
 
+// 🔹 Direct Order Placement (For orders <= ₹1)
+app.post("/orders/direct", authMiddleware, async (req, res) => {
+    try {
+        const { cartItems, totalAmount, shippingAddress } = req.body;
+
+        if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
+            return res.status(400).json({ message: "Cart items are required" });
+        }
+
+        const items = cartItems.map((item) => ({
+            productId: item.productId,
+            quantity:  item.quantity,
+            price:     item.price,
+        }));
+
+        const newOrder = await OrderModel.create({
+            userId:          req.user.id,
+            items,
+            totalAmount,
+            shippingAddress: shippingAddress || "Campus Hostel",
+            paymentStatus:   "Paid",
+            status:          "Confirmed",
+        });
+
+        // Attach order to user
+        await UserModel.findByIdAndUpdate(req.user.id, {
+            $push: {
+                orders: {
+                    orderId:     newOrder._id,
+                    orderStatus: "Confirmed",
+                    totalAmount,
+                },
+            },
+        });
+
+        res.json({ success: true, orderId: newOrder._id });
+    } catch (error) {
+        console.error("Direct order error:", error);
+        res.status(500).json({ message: "Server error during direct order placement" });
+    }
+});
+
 // 🔹 Product Upload Route
 app.post("/restaurant/listproductaddform", authMiddleware, upload, async (req, res) => {
     try {
@@ -219,7 +262,95 @@ app.get("/restaurant/dashboard", authMiddleware, async (req, res) => {
         res.json({ restaurant, products });
     } catch (error) {
         res.status(500).json({ error: error.message });
-    2}
+    }
+});
+
+// GET all orders for the logged-in restaurant
+app.get("/restaurant/orders", authMiddleware, async (req, res) => {
+    try {
+        const restaurant = await RestaurantModel.findById(req.user.id);
+        if (!restaurant) return res.status(404).json({ message: "Restaurant not found" });
+
+        // Fetch products of this restaurant
+        const products = await ProductModel.find({ canteen: restaurant.name });
+        const productIds = products.map(p => p._id);
+
+        // Fetch orders containing any of these products
+        const orders = await OrderModel.find({
+            "items.productId": { $in: productIds }
+        }).populate("userId", "username email mobile").sort({ createdAt: -1 });
+
+        // Format orders to only display items that belong to this restaurant
+        const formattedOrders = orders.map(order => {
+            const restaurantItems = order.items.filter(item =>
+                productIds.some(pid => pid.toString() === item.productId.toString())
+            ).map(item => {
+                const productInfo = products.find(p => p._id.toString() === item.productId.toString());
+                return {
+                    productId: item.productId,
+                    name: productInfo ? productInfo.name : "Unknown",
+                    quantity: item.quantity,
+                    price: item.price
+                };
+            });
+
+            return {
+                _id: order._id,
+                user: order.userId,
+                items: restaurantItems,
+                totalAmount: restaurantItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                status: order.status,
+                paymentStatus: order.paymentStatus,
+                shippingAddress: order.shippingAddress,
+                createdAt: order.createdAt
+            };
+        });
+
+        res.json(formattedOrders);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// PATCH order status
+app.patch("/restaurant/orders/:id", authMiddleware, async (req, res) => {
+    try {
+        const { status } = req.body;
+        if (!status) return res.status(400).json({ message: "Status is required" });
+
+        const updatedOrder = await OrderModel.findByIdAndUpdate(
+            req.params.id,
+            { status },
+            { new: true }
+        );
+
+        if (!updatedOrder) return res.status(404).json({ message: "Order not found" });
+        res.json({ message: "Status updated successfully", order: updatedOrder });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// GET all canteens
+app.get("/restaurants", async (req, res) => {
+    try {
+        const canteens = await RestaurantModel.find({}, "name email mobile address isVerified");
+        res.json(canteens);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// GET customer orders
+app.get("/orders", authMiddleware, async (req, res) => {
+    try {
+        const orders = await OrderModel.find({ userId: req.user.id })
+            .populate("items.productId", "name category images canteen")
+            .sort({ createdAt: -1 });
+        res.json(orders);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // 🔹 Login Route
@@ -241,6 +372,37 @@ app.post("/login", async (req, res) => {
         res.json({ message: "Success", user, token});
     } catch (error) {
         res.status(500).json({ message: "Server error" });
+    }
+});
+
+// 🔹 Update Customer Profile (Hostel, Room, Mobile, Username)
+app.put("/user/profile", authMiddleware, async (req, res) => {
+    try {
+        const { username, mobile, hostel, roomNo } = req.body;
+        
+        const user = await UserModel.findById(req.user.id);
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        if (mobile && mobile !== user.mobile) {
+            const existing = await UserModel.findOne({ mobile });
+            if (existing) {
+                return res.status(400).json({ message: "Mobile number is already in use by another account." });
+            }
+            user.mobile = mobile;
+        }
+
+        if (username) user.username = username;
+        if (hostel !== undefined) user.hostel = hostel;
+        if (roomNo !== undefined) user.roomNo = roomNo;
+
+        await user.save();
+
+        res.json({ message: "Profile updated successfully", user });
+    } catch (error) {
+        console.error("Update profile error:", error);
+        res.status(500).json({ message: "Server error updating profile", error: error.message });
     }
 });
 

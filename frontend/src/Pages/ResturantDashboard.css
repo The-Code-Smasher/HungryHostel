@@ -558,3 +558,292 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ── Restaurant Hero Details & Verification ── */
+.rd-restaurant-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.rd-verified-badge {
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ── Tabs Navigation ── */
+.rd-tabs-nav {
+    display: flex;
+    gap: 16px;
+    background: #141414;
+    border-bottom: 1px solid #242424;
+    padding: 0 32px;
+}
+
+.rd-tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 18px 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rd-tab-btn:hover {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.rd-tab-btn.active {
+    color: #ff6600;
+    border-bottom-color: #ff6600;
+}
+
+.rd-orders-badge {
+    background: #ff6600;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    line-height: 1;
+}
+
+/* ── Orders Dashboard ── */
+.rd-btn-refresh {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f0ede8;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.rd-btn-refresh:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.rd-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.rd-order-card {
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rd-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #242424;
+    padding-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.rd-order-id {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #f0ede8;
+    margin: 0 0 4px;
+}
+
+.rd-order-date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.rd-order-status-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rd-status-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid transparent;
+}
+
+.rd-status-badge.status-pending {
+    background: rgba(255, 102, 0, 0.12);
+    border-color: rgba(255, 102, 0, 0.3);
+    color: #ff9944;
+}
+
+.rd-status-badge.status-preparing {
+    background: rgba(255, 177, 0, 0.12);
+    border-color: rgba(255, 177, 0, 0.3);
+    color: #ffb100;
+}
+
+.rd-status-badge.status-completed {
+    background: rgba(74, 222, 128, 0.12);
+    border-color: rgba(74, 222, 128, 0.3);
+    color: #4ade80;
+}
+
+.rd-status-badge.status-cancelled {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.rd-status-select {
+    background: #1c1c1c;
+    border: 1px solid #2e2e2e;
+    color: #f0ede8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.rd-status-select:focus {
+    border-color: #ff6600;
+}
+
+.rd-order-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+}
+
+.rd-sub-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0ede8;
+    margin: 0 0 14px;
+    border-bottom: 1px solid #242424;
+    padding-bottom: 8px;
+}
+
+.rd-customer-info p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.rd-customer-info p strong {
+    color: #f0ede8;
+}
+
+.rd-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rd-order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1f1f1f;
+    padding-bottom: 10px;
+}
+
+.rd-order-item:last-child {
+    border-bottom: none;
+}
+
+.rd-item-details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rd-item-name {
+    font-size: 14px;
+    color: #f0ede8;
+    text-transform: capitalize;
+}
+
+.rd-item-quantity {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+}
+
+.rd-item-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0ede8;
+}
+
+.rd-order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1.5px dashed #242424;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 600;
+}
+
+.rd-total-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #ff6600;
+}
+
+@media (max-width: 768px) {
+    .rd-tabs-nav {
+        padding: 0 18px;
+    }
+    
+    .rd-tab-btn {
+        padding: 14px 12px;
+        font-size: 13px;
+    }
+    
+    .rd-order-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}

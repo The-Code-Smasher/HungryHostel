@@ -1,0 +1,187 @@
+.addr-page {
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg-primary, #0d0d0d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.addr-card {
+    background-color: var(--bg-secondary, #161616);
+    border: 1px solid var(--border-color, #252525);
+    border-radius: 20px;
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: addrFadeIn 0.3s ease;
+}
+
+@keyframes addrFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.addr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.addr-back-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.addr-back-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.addr-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-main, #f0ede8);
+    margin: 0;
+}
+
+.addr-order-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 102, 0, 0.08);
+    border: 1px solid rgba(255, 102, 0, 0.2);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--text-main, #f0ede8);
+}
+
+.addr-order-banner strong {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    color: var(--accent, #ff6600);
+}
+
+.addr-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #f87171;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+}
+
+.addr-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.addr-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.addr-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted, rgba(255, 255, 255, 0.4));
+}
+
+.addr-group input,
+.addr-group select,
+.addr-group textarea {
+    background: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 12px 14px;
+    color: #f0ede8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+}
+
+.addr-group textarea {
+    resize: none;
+}
+
+.addr-group input:focus,
+.addr-group select:focus,
+.addr-group textarea:focus {
+    border-color: rgba(255, 102, 0, 0.5);
+}
+
+.addr-group select option {
+    background: #1c1c1c;
+    color: #f0ede8;
+}
+
+.addr-group input::placeholder,
+.addr-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.addr-row {
+    display: flex;
+    gap: 14px;
+}
+
+.addr-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent, #ff6600);
+    color: #ffffff;
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 102, 0, 0.25);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+}
+
+.addr-submit-btn:hover {
+    background-color: var(--accent-hover, #e55a00);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 102, 0, 0.35);
+}
+
+.addr-submit-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+    .addr-card {
+        padding: 24px 20px;
+    }
+    .addr-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

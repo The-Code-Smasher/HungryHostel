@@ -5,7 +5,7 @@ import './FoodItems.css';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
 
-const FoodItems = ({ selectedCategory, searchQuery }) => {
+const FoodItems = ({ selectedCategory, selectedCanteen, searchQuery }) => {
     const [allProducts, setAllProducts] = useState([]);
     const [loading, setLoading]         = useState(true);
     const [error, setError]             = useState(null);
@@ -30,7 +30,14 @@ const FoodItems = ({ selectedCategory, searchQuery }) => {
     const displayed = useMemo(() => {
         let items = allProducts;
 
-        if (selectedCategory && selectedCategory !== 'All') {
+        if (selectedCanteen && selectedCanteen !== 'All') {
+            items = items.filter(p =>
+                p.canteen?.toLowerCase() === selectedCanteen.toLowerCase()
+            );
+        }
+
+        // Only filter by category if there is no search query active (global search override)
+        if (!searchQuery?.trim() && selectedCategory && selectedCategory !== 'All') {
             items = items.filter(p =>
                 p.category?.toLowerCase() === selectedCategory.toLowerCase()
             );
@@ -46,7 +53,7 @@ const FoodItems = ({ selectedCategory, searchQuery }) => {
         }
 
         return items;
-    }, [allProducts, selectedCategory, searchQuery]);
+    }, [allProducts, selectedCategory, selectedCanteen, searchQuery]);
 
     if (loading) {
         return (

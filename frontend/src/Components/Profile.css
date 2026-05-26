@@ -145,9 +145,8 @@
 
 /* Details */
 .profile-details {
-    flex: 1;
     padding: 8px 0;
-    overflow-y: auto;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 .profile-detail-row {
@@ -175,6 +174,155 @@
     word-break: break-all;
 }
 
+/* ── Customer Order Logs Section ── */
+.profile-orders-section {
+    padding: 20px 24px;
+    border-top: 1px solid #1e1e1e;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.profile-orders-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 14px;
+}
+
+.profile-orders-loading,
+.profile-orders-empty {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-tertiary) transparent;
+}
+
+.profile-orders-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.profile-orders-list::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+}
+
+.profile-order-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s;
+}
+
+.profile-order-card:hover {
+    border-color: rgba(255, 102, 0, 0.25);
+}
+
+.porder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.porder-date {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.porder-status {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid transparent;
+}
+
+.porder-status.status-pending {
+    background: rgba(255, 102, 0, 0.1);
+    color: #ff9944;
+    border-color: rgba(255, 102, 0, 0.2);
+}
+
+.porder-status.status-preparing {
+    background: rgba(255, 177, 0, 0.1);
+    color: #ffb100;
+    border-color: rgba(255, 177, 0, 0.2);
+}
+
+.porder-status.status-completed {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    border-color: rgba(74, 222, 128, 0.2);
+}
+
+.porder-status.status-cancelled {
+    background: rgba(239, 68, 68, 0.1);
+    color: #f87171;
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.porder-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.porder-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.porder-item-name {
+    text-transform: capitalize;
+}
+
+.porder-item-qty {
+    color: var(--text-muted);
+}
+
+.porder-footer {
+    border-top: 1px solid #202020;
+    padding-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.porder-total {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.porder-total strong {
+    color: #ff6600;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+}
+
 /* Footer */
 .profile-footer {
     padding: 20px 24px;
@@ -196,6 +344,136 @@
 }
 .profile-logout-btn:hover {
     background: rgba(239, 68, 68, 0.18);
+}
+
+/* Edit Profile Form */
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.pe-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.pe-group label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.pe-group input,
+.pe-group select {
+    background: #1c1c1c;
+    border: 1px solid #252525;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #f0ede8;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+}
+
+.pe-group input:focus,
+.pe-group select:focus {
+    border-color: rgba(255, 102, 0, 0.5);
+}
+
+.pe-group select option {
+    background: #1c1c1c;
+    color: #f0ede8;
+}
+
+.pe-row {
+    display: flex;
+    gap: 12px;
+}
+
+.pe-error {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #f87171;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.pe-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.pe-save-btn {
+    flex: 1.2;
+    padding: 10px;
+    background-color: var(--accent, #ff6600);
+    color: #ffffff;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.pe-save-btn:hover {
+    background-color: var(--accent-hover, #e55a00);
+}
+
+.pe-cancel-btn {
+    flex: 0.8;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.pe-cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+/* Edit Details Trigger */
+.profile-edit-trigger-wrap {
+    padding: 16px 24px 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-edit-trigger {
+    background: none;
+    border: 1px solid var(--accent, #ff6600);
+    color: var(--accent, #ff6600);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.profile-edit-trigger:hover {
+    background: var(--accent, #ff6600);
+    color: #fff;
 }
 
 @media (max-width: 420px) {

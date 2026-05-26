@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
 * { box-sizing: border-box; }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background: #0d0d0d;
 }
 
@@ -39,8 +37,9 @@ body {
 }
 
 .resturant-lgn-title {
+    font-family: 'Syne', sans-serif;
     font-size: 22px;
-    font-weight: 600;
+    font-weight: 700;
     color: #f0ede8;
     margin: 0 0 24px;
     text-align: center;
@@ -96,7 +95,7 @@ body {
     border-radius: 10px;
     padding: 12px 14px;
     color: #f0ede8;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     outline: none;
     transition: border-color 0.15s;
@@ -147,9 +146,9 @@ body {
     color: #fff;
     border: none;
     border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Syne', sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
     transition: background 0.15s, transform 0.1s;
     margin-top: 4px;
@@ -180,7 +179,7 @@ body {
     color: #ff6600;
     cursor: pointer;
     font-size: 13px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     padding: 0;
     margin-left: 4px;
 }

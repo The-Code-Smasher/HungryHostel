@@ -1,10 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
-
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
+/* Customer Dashboard Stylesheet */
 
 /* 🔹 HERO SECTION */
 .home-container {
@@ -89,33 +83,37 @@ body {
 .dashboard-search input {
     width: 100%;
     padding: 20px 30px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 30px;
     outline: none;
     font-size: 16px;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding-right: 45px;
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    padding-right: 55px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .dashboard-search input::placeholder {
-    color: #777;
+    color: var(--text-muted);
 }
 
 /* SEARCH BUTTON */
 .dashboard-search button {
     position: absolute;
-    right: 10px;
-    top: 60%;
+    right: 20px;
+    top: 50%;
     transform: translateY(-50%);
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-size: 25px;
-    color: #333;
+    font-size: 20px;
+    color: var(--text-muted);
+    transition: color 0.2s;
 }
 
 .dashboard-search button:hover {
-    color: #000;
+    color: var(--accent);
 }
 
 /* RESPONSIVE DESIGN */

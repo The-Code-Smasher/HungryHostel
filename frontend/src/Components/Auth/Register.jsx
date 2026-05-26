@@ -59,7 +59,7 @@ const Register = () => {
 
                         <label>Mobile Number</label>
                         <input
-                            type="tel" name="mobile" placeholder="10-digit number"
+                            type="text" name="mobile" placeholder="10-digit number"
                             required maxLength="10" value={form.mobile} onChange={handleChange}
                         />
 

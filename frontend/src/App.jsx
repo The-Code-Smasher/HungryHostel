@@ -5,10 +5,11 @@ import ResturantProtectedRoute from './ResturantProtectedRoute';
 import RestaurantDashboard from './Pages/ResturantDashboard';
 import CustomerDashboard from './Pages/CustomerDashboard';
 import Payment from './Components/payment/payment';
-import Login from './Components/Auth/login';
+import Login from './Components/Auth/Login';
 import Register from './Components/Auth/Register';
 import ListProductAddForm from "./Pages/ListProductAddForm";
 import RestaurantLogin from "./Components/Auth/ResturantLogin";
+import Address from "./Pages/Address";
 
 function App() {
     return (
@@ -16,7 +17,7 @@ function App() {
             <CartProvider>
                 <Routes>
 
-                    // Customer Homepage 
+                    // Customer Homepage
                     <Route
                         path="/"
                         element={
@@ -27,7 +28,10 @@ function App() {
                     />
 
                     // Payment Gateway for Customer
-                    <Route path="/payment" element={<Payment />} />
+                    <Route path="/payment" element={<ProtectedRoute><Payment /></ProtectedRoute>} />
+
+                    // Delivery Address Form
+                    <Route path="/address" element={<ProtectedRoute><Address /></ProtectedRoute>} />
 
                     // Login and Register for Customer
                     <Route path="/login" element={<Login />} />
@@ -41,16 +45,16 @@ function App() {
                         <ResturantProtectedRoute>
                             <RestaurantDashboard/>
                         </ResturantProtectedRoute>
-                        
+
                     } />
-                    
+
                     // Resturant Add Product
                     <Route path="/resturant/listproductaddform" element={
                         <ResturantProtectedRoute>
                             <ListProductAddForm/>
                         </ResturantProtectedRoute>
                     } />
-                    
+
                 </Routes>
             </CartProvider>
         </Router>

@@ -1,0 +1,99 @@
+.canteen-selector-container {
+    max-width: 1200px;
+    padding: 20px 20px 0;
+    margin: 0 auto;
+}
+
+.cs-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 20px 0 12px;
+}
+
+.cs-list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--bg-tertiary) transparent;
+    padding-bottom: 12px;
+}
+
+.cs-list::-webkit-scrollbar {
+    height: 5px;
+}
+
+.cs-list::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+.cs-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    flex-shrink: 0;
+    min-width: 170px;
+}
+
+.cs-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.cs-card.active {
+    background-color: rgba(255, 102, 0, 0.1);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.15);
+}
+
+.cs-emoji {
+    font-size: 1.5rem;
+}
+
+.cs-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cs-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+}
+
+.cs-card.active .cs-name {
+    color: var(--accent);
+}
+
+.cs-verified {
+    background: #4ade80;
+    color: #0d0d0d;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    font-size: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 6px;
+    font-weight: 800;
+}
+
+.cs-address {
+    font-size: 11px;
+    color: var(--text-muted);
+}

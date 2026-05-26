@@ -25,7 +25,7 @@ const RestaurantLogin = () => {
             if (response.data.message === "Success") {
                 localStorage.setItem("authToken", response.data.token);
                 localStorage.setItem("loginTime", new Date().getTime().toString());
-                localStorage.setItem('resturant', JSON.stringify(response.data.restaurant));
+                localStorage.setItem('resturant', JSON.stringify(response.data.resturant));
                 navigate('/resturant');
             } else {
                 alert(response.data.message);
