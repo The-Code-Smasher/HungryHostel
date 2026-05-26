@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ── Root ── */
+.rd-root {
+    font-family: 'DM Sans', sans-serif;
+    background: #0d0d0d;
+    min-height: 100vh;
+    color: #f0ede8;
+}
+
+/* ── Hero ── */
+.rd-hero {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a0800 0%, #2d1000 50%, #1a0800 100%);
+}
+
+.rd-hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #ff6600 0,
+        #ff6600 1px,
+        transparent 0,
+        transparent 50%
+    );
+    background-size: 20px 20px;
+}
+
+.rd-hero-glow {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 320px;
+    background: radial-gradient(ellipse, rgba(255, 102, 0, 0.22) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* ── Navbar ── */
+.rd-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), transparent);
+}
+
+.rd-logo-img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+.rd-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rd-btn-post {
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.rd-btn-post:hover {
+    background: #e55a00;
+    transform: translateY(-1px);
+}
+
+.rd-btn-post:active {
+    transform: translateY(0);
+}
+
+.rd-btn-logout {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.rd-btn-logout:hover {
+    background: rgba(255, 255, 255, 0.13);
+}
+
+/* ── Hero Content ── */
+.rd-hero-content {
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    right: 32px;
+}
+
+.rd-open-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 102, 0, 0.15);
+    border: 1px solid rgba(255, 102, 0, 0.3);
+    color: #ff9944;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+}
+
+.rd-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: #ff6600;
+    border-radius: 50%;
+    animation: rdPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes rdPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.25; }
+}
+
+.rd-restaurant-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 40px;
+    color: #fff;
+    line-height: 1;
+    margin: 0 0 10px;
+    letter-spacing: -1px;
+    text-transform: capitalize;
+}
+
+.rd-restaurant-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+.rd-meta-dot {
+    opacity: 0.35;
+}
+
+/* ── Stats Bar ── */
+.rd-stats-bar {
+    display: flex;
+    background: #141414;
+    border-bottom: 1px solid #242424;
+}
+
+.rd-stat {
+    flex: 1;
+    padding: 18px 0;
+    text-align: center;
+    border-right: 1px solid #242424;
+}
+
+.rd-stat:last-child {
+    border-right: none;
+}
+
+.rd-stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ff6600;
+    line-height: 1;
+}
+
+.rd-stat-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+/* ── Body ── */
+.rd-body {
+    padding: 28px 32px 48px;
+}
+
+.rd-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.rd-section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f0ede8;
+    margin: 0;
+}
+
+/* ── Filters ── */
+.rd-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.rd-filter {
+    background: transparent;
+    border: 1px solid #2e2e2e;
+    color: rgba(255, 255, 255, 0.45);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.rd-filter:hover {
+    border-color: rgba(255, 102, 0, 0.35);
+    color: rgba(255, 102, 0, 0.85);
+}
+
+.rd-filter.active {
+    background: rgba(255, 102, 0, 0.12);
+    border-color: rgba(255, 102, 0, 0.45);
+    color: #ff6600;
+}
+
+/* ── Grid ── */
+.rd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+/* ── Food Card ── */
+.rd-card {
+    background: #161616;
+    border: 1px solid #222;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    position: relative;
+}
+
+.rd-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 102, 0, 0.28);
+}
+
+.rd-card-img-wrap {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    background: #1c1c1c;
+}
+
+.rd-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.rd-card:hover .rd-card-img {
+    transform: scale(1.04);
+}
+
+.rd-card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    background: linear-gradient(135deg, #1c1c1c, #281000);
+}
+
+.rd-card-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.rd-card-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.rd-card:hover .rd-card-actions {
+    opacity: 1;
+}
+
+.rd-card-action-btn {
+    width: 30px;
+    height: 30px;
+    background: rgba(20, 20, 20, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.15s;
+}
+
+.rd-card-action-btn:hover {
+    background: rgba(220, 50, 50, 0.6);
+    border-color: rgba(220, 50, 50, 0.4);
+}
+
+.rd-card-body {
+    padding: 14px 14px 16px;
+}
+
+.rd-card-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0ede8;
+    margin: 0 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+}
+
+.rd-card-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.38);
+    margin: 0 0 12px;
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.rd-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rd-card-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff6600;
+    line-height: 1;
+}
+
+.rd-card-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255, 102, 0, 0.55);
+    margin-left: 2px;
+}
+
+.rd-avail-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+/* ── Loading ── */
+.rd-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    color: rgba(255, 255, 255, 0.3);
+    gap: 14px;
+}
+
+.rd-loading p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.rd-spinner {
+    width: 32px;
+    height: 32px;
+    border: 2px solid rgba(255, 102, 0, 0.15);
+    border-top-color: #ff6600;
+    border-radius: 50%;
+    animation: rdSpin 0.7s linear infinite;
+}
+
+@keyframes rdSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ── Empty ── */
+.rd-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    color: rgba(255, 255, 255, 0.25);
+    gap: 10px;
+}
+
+.rd-empty-icon {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.rd-empty p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.rd-btn-add-first {
+    margin-top: 8px;
+}
+
+/* ── Toast ── */
+.rd-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #1e1e1e;
+    border: 1px solid #303030;
+    color: #f0ede8;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s, transform 0.2s;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.rd-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .rd-navbar {
+        padding: 14px 18px;
+    }
+
+    .rd-hero-content {
+        left: 18px;
+        right: 18px;
+        bottom: 24px;
+    }
+
+    .rd-restaurant-name {
+        font-size: 28px;
+    }
+
+    .rd-body {
+        padding: 20px 18px 40px;
+    }
+
+    .rd-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rd-stat-number {
+        font-size: 18px;
+    }
+
+    .rd-grid {
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .rd-restaurant-name {
+        font-size: 22px;
+    }
+
+    .rd-hero {
+        height: 260px;
+    }
+
+    .rd-stats-bar {
+        flex-wrap: wrap;
+    }
+
+    .rd-stat {
+        flex: 1 1 50%;
+        border-right: none;
+        border-bottom: 1px solid #242424;
+    }
+
+    .rd-stat:nth-child(odd) {
+        border-right: 1px solid #242424;
+    }
+
+    .rd-stat:last-child,
+    .rd-stat:nth-last-child(2):nth-child(odd) {
+        border-bottom: none;
+    }
+
+    .rd-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

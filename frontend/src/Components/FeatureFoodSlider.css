@@ -1,128 +1,83 @@
-.slider-container {
-    width: 100%;
-    margin: auto;
-    max-width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
+
+.ffs-section {
+    padding: 0 0 8px;
+    background: #0a0a0a;
+    overflow: hidden;
 }
 
-.slide {
-    width: 200px;
-    height: 200px;
-    text-align: center;
-    padding: 20px;
+.ffs-inner {
+    padding: 24px 24px 8px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.slider-title {
-    color: rgb(47, 47, 47);
-    font-size: 15px;
-    padding-top: 30px;
-    font-weight: 600;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 100%;
+/* Override slick defaults */
+.ffs-inner .slick-list { overflow: visible; }
+.ffs-inner .slick-track { display: flex; align-items: center; }
+
+.ffs-slide-wrap {
+    padding: 0 6px;
 }
 
-.slider-title::before,
-.slider-title::after {
-    content: "";
-    flex-grow: 1;
-    height: 2px;
-    background-color: rgb(47, 47, 47);
-    margin: 0 10px;
-}
-
-.slider-image {
-    justify-content: center;
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.food-image:hover {
-    transform: scale(1.1);
-}
-
-.food-name {
-    color: rgb(255 241 217);
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 10px;
-}
-
-.slide{
+.ffs-chip {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    transition: transform 0.15s;
 }
 
-.SlideOut{
+.ffs-chip:hover {
+    transform: translateY(-3px);
+}
+
+.ffs-chip:hover .ffs-img-wrap {
+    border-color: rgba(255, 102, 0, 0.5);
+    background: rgba(255, 102, 0, 0.08);
+}
+
+.ffs-chip:hover .ffs-label {
+    color: #ff6600;
+}
+
+.ffs-img-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #1a1a1a;
+    border: 2px solid #232323;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: border-color 0.15s, background 0.15s;
+    margin: 0 auto;
 }
 
-@media (max-width: 1024px) {
-    .slider-image{
-        width: 150px;
-        height: 150px;
-    }
+.ffs-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
 
-    .SlideOut{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.ffs-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 0.15s;
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
-    .slide{
-        width: 200px !important;
-        height: 200px !important;
-        padding: 20px;
-        text-align: center;
-    }
-    .food-name {
-        font-size: 16px;
-        object-fit: cover;
-        border-radius: 10px;
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .food-image {
-        max-width: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .food-name {
-        font-size: 18px;
-        justify-content: center;
-    }
-
-    .food-image {
-        width: 250px;
-        height: 250px;
-        
-        justify-content: center;
-    }
-    .slider-container{
-        justify-content: center;
-    }
-   
-    .slide {
-        width: 200px !important;
-        height: 200px !important;
-        text-align: center;
-        flex: 0 0 auto; 
-        justify-content: center;
-        padding: 20px;
-        align-items: center;
-    }
+    .ffs-inner { padding: 16px 16px 4px; }
+    .ffs-img-wrap { width: 60px; height: 60px; }
+    .ffs-img { width: 42px; height: 42px; }
+    .ffs-label { font-size: 11px; }
 }

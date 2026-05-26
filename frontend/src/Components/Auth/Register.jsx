@@ -4,103 +4,97 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import axios from 'axios';
 import './Login.css';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
 const Register = () => {
     const navigate = useNavigate();
-
-    const [username, setUsername] = useState('');
-    const [mobile, setMobile] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [form, setForm]             = useState({ username: '', mobile: '', email: '', password: '' });
     const [showPassword, setShowPassword] = useState(false);
+    const [loading, setLoading]       = useState(false);
+    const [error, setError]           = useState('');
+    const [success, setSuccess]       = useState('');
+
+    const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
+        setSuccess('');
 
-        try {
-            const response = await axios.post('http://localhost:8000/register', {
-                username,
-                mobile,
-                email,
-                password
-            });
-
-            console.log("Registration Successful:", response.data);
-            alert("Registration successful! Redirecting to login.");
-            navigate('/login');
-        } catch (error) {
-            console.error("Registration Error:", error);
-            alert("Registration failed. Please try again.");
+        if (!/^\d{10}$/.test(form.mobile)) {
+            setError('Mobile number must be exactly 10 digits.');
+            return;
         }
-    };
+        if (form.password.length < 6) {
+            setError('Password must be at least 6 characters.');
+            return;
+        }
 
-    const togglePasswordVisibility = () => {
-        setShowPassword((prev) => !prev);
+        setLoading(true);
+        try {
+            await axios.post(`${BACKEND_URL}/register`, form);
+            setSuccess('Account created! Redirecting to login...');
+            setTimeout(() => navigate('/login'), 1500);
+        } catch (err) {
+            setError(err.response?.data?.message || 'Registration failed. Please try again.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="login-main">
-        <div className="auth-container">
-            <div className="tabs">
-                <div className="tab active">Sign Up</div>
-                <div className="tab" onClick={() => navigate('/login')}>Login</div>
-            </div>
-            <div className="login-container" id="signup">
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="username">User Name</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        placeholder="Enter your username" 
-                        required 
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-
-                    <label htmlFor="phone">Phone</label>
-                    <input 
-                        type="text" 
-                        id="phone" 
-                        placeholder="Enter your phone number" 
-                        required 
-                        value={mobile}
-                        onChange={(e) => setMobile(e.target.value)}
-                    />
-
-                    <label htmlFor="email">Email</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        placeholder="Enter your email" 
-                        required 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-
-                    <label htmlFor="password">Password</label>
-                    <div className="password">
-                        <input 
-                            type={showPassword ? "text" : "password"} 
-                            id="password" 
-                            placeholder="Enter your password" 
-                            required 
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+            <div className="auth-container">
+                <div className="tabs">
+                    <div className="tab active">Sign Up</div>
+                    <div className="tab" onClick={() => navigate('/login')}>Login</div>
+                </div>
+                <div className="login-container">
+                    <form onSubmit={handleSubmit}>
+                        <label>Username</label>
+                        <input
+                            type="text" name="username" placeholder="Pick a username"
+                            required value={form.username} onChange={handleChange}
                         />
-                        {showPassword ? (
-                            <FaEyeSlash className="pass-icon" onClick={togglePasswordVisibility} />
-                        ) : (
-                            <FaEye className="pass-icon" onClick={togglePasswordVisibility}/>
-                        )}
-                    </div>
 
-                    <button className='button' type="submit">Register</button>
-                </form>
-                <div className="alt-option">
-                    Already have an account? 
-                    <button className='btn' onClick={() => navigate('/login')}>Login</button>
+                        <label>Mobile Number</label>
+                        <input
+                            type="tel" name="mobile" placeholder="10-digit number"
+                            required maxLength="10" value={form.mobile} onChange={handleChange}
+                        />
+
+                        <label>Email</label>
+                        <input
+                            type="email" name="email" placeholder="your@email.com"
+                            required value={form.email} onChange={handleChange}
+                        />
+
+                        <label>Password</label>
+                        <div className="password">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                name="password" placeholder="Min 6 characters"
+                                required value={form.password} onChange={handleChange}
+                            />
+                            {showPassword
+                                ? <FaEyeSlash className="pass-icon" onClick={() => setShowPassword(false)} />
+                                : <FaEye     className="pass-icon" onClick={() => setShowPassword(true)} />
+                            }
+                        </div>
+
+                        {error   && <div className="auth-error">{error}</div>}
+                        {success && <div className="auth-success">{success}</div>}
+
+                        <button className="button" type="submit" disabled={loading}>
+                            {loading ? 'Creating account...' : 'Create Account'}
+                        </button>
+                    </form>
+                    <div className="alt-option">
+                        Already have an account?
+                        <button onClick={() => navigate('/login')}>Login</button>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     );
 };

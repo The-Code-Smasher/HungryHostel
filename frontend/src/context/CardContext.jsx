@@ -2,51 +2,52 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
 
-export const useCart = () => {
-  return useContext(CartContext);
-};
+export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(() => {
-        
-        const savedCart = localStorage.getItem("cart");
-        return savedCart ? JSON.parse(savedCart) : {};
+        try{
+            const savedCart = localStorage.getItem("cart");
+            return savedCart ? JSON.parse(savedCart) : {};
+        }catch{
+            return {};
+        }
     });
 
-    
+
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }, [cart]);
-    
+
     const getTotalCount = () => {
         return Object.values(cart).reduce((total, item) => total + item.quantity, 0);
     };
 
-    const addToCart = (productId, price) => {
+    const addToCart = (productId, price, name) => {
         setCart((prevCart) => {
             const updatedCart = { ...prevCart };
-            
+
             if (updatedCart[productId]) {
                 updatedCart[productId].quantity += 1;
             } else {
                 updatedCart[productId] = { quantity: 1, price }; // Add new product
             }
-            
+
             return updatedCart;
         });
-    };    
+    };
 
     const updateQuantity = (productId, newQuantity) => {
         setCart((prevCart) => {
-            const updatedCart = { ...prevCart };
-    
-            if (updatedCart[productId]) {
-                updatedCart[productId].quantity = newQuantity;
+            const updated = { ...prevCart };
+            if (newQuantity <= 0) {
+                delete updated[productId];
+            } else if (updated[productId]) {
+                updated[productId] = { ...updated[productId], quantity: newQuantity };
             }
-            
-            return updatedCart;
+            return updated;
         });
-    };    
+    };
 
     const removeFromCart = (id) => {
         setCart((prevCart) => {
@@ -56,9 +57,9 @@ export const CartProvider = ({ children }) => {
         });
     };
 
-    const calculateTotal = () => {
-        return Object.values(cart).reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
-    };
+    const clearCart = () => setCart({});
+
+    const calculateTotal = () => Object.values(cart).reduce((total, item) => total + item.quantity * item.price, 0).toFixed(2);
 
     return (
         <CartContext.Provider value={{
@@ -66,6 +67,7 @@ export const CartProvider = ({ children }) => {
             addToCart,
             updateQuantity,
             removeFromCart,
+            clearCart,
             calculateTotal,
             getTotalCount
         }}>

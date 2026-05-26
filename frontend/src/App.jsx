@@ -15,6 +15,8 @@ function App() {
         <Router>
             <CartProvider>
                 <Routes>
+
+                    // Customer Homepage 
                     <Route
                         path="/"
                         element={
@@ -23,21 +25,32 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+
+                    // Payment Gateway for Customer
                     <Route path="/payment" element={<Payment />} />
+
+                    // Login and Register for Customer
                     <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+
+                    // Login for Resturant
+                    <Route path="/resturant-login" element={<RestaurantLogin/>} />
+
+                    // Resturant Dashboard
                     <Route path="/resturant" element={
                         <ResturantProtectedRoute>
                             <RestaurantDashboard/>
                         </ResturantProtectedRoute>
                         
                     } />
-                    <Route path="/resturant-login" element={<RestaurantLogin/>} />
+                    
+                    // Resturant Add Product
                     <Route path="/resturant/listproductaddform" element={
                         <ResturantProtectedRoute>
                             <ListProductAddForm/>
                         </ResturantProtectedRoute>
                     } />
-                    <Route path="/register" element={<Register />} />
+                    
                 </Routes>
             </CartProvider>
         </Router>
